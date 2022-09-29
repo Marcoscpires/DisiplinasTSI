@@ -1,4 +1,4 @@
-package exercicios;
+package fluxos;
 
 import java.util.Arrays;
 import java.util.List;

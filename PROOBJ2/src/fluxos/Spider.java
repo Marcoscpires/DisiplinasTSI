@@ -1,4 +1,4 @@
-package exercicios;
+package fluxos;
 
 
 public class Spider extends Animal {

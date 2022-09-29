@@ -1,4 +1,4 @@
-package exercicios;
+package fluxos;
 
 import java.security.SecureRandom;
 import java.util.Arrays;
