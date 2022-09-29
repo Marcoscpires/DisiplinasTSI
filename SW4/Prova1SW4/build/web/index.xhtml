@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"></link>
+    <h:head>
+        <title>Jogo da Forca</title>
+    </h:head>
+    <h:body>
+        <div class="container text-center border border-1">
+            <h1>Jogo da Forca</h1>
+            <div class="row">
+                <div class="col border border-1" >
+                    <h2>Palavras Acertadas</h2>
+                    <h:outputText value="#{jogoBean.padivinhadas}"/><br/>
+                    <h2>Palavras Erradas</h2>
+                    <h:outputText value="#{jogoBean.perradas}"/><br/>
+                </div>
+                <div class="col border border-1" >
+                    <h:form id="categoria">
+                        <h:selectOneMenu id="ctsel" value="#{jogoBean.categoriaSelecionada}"
+                                         required="true"
+                                         requiredMessage="Selecione uma categoria."
+                                         converter="#{categoriaConverter}">
+                            <f:selectItems value="#{palavrasBean.listaCategoria}"/>
+                        </h:selectOneMenu>
+                        <h:commandButton value="Selecionar" 
+                                         action="#{jogoBean.sortear()}"/><br/>
+                    </h:form>
+                    <h:message for="ctsel" infoStyle="color: #00FF00;" 
+                               errorStyle="color: #FF0000;"/>
+                    <br/>
+                    <h:graphicImage value="imgs/imagem${jogoBean.erros}.png" width="100px" height="169px"/>
+                    <h:outputText style="letter-spacing: 5px" value="#{jogoBean.acertos}"/><br/><br/>
+
+                    <h:form id="tentativa">
+                        <h:inputText size="2" maxlength="2" id="letra" value="#{jogoBean.letra}"/>
+                        <h:commandButton value="TENTAR"
+                                         action="#{jogoBean.tentativa()}"/><br/>
+                        <h:message for="letra" infoStyle="color: #00FF00;" 
+                                   errorStyle="color: #FF0000;"/>
+                        <br/>
+                    </h:form>
+                </div>
+                <div class="col border border-1">
+                    <h2>Letras já tentadas</h2>
+                    <h:outputText style="letter-spacing: 10px" value="#{jogoBean.jogados}"/><br/>
+                    <h3>Adicionar palavra na categoria</h3> 
+                    <h:form>
+                        <h:selectOneMenu id="ctsel" value="#{palavrasBean.catSel}"
+                                         required="true"
+                                         requiredMessage="Selecione uma categoria."
+                                         converter="#{categoriaConverter}">
+                            <f:selectItems value="#{palavrasBean.listaCategoria}"/>
+                        </h:selectOneMenu><br/>
+                        <h:inputText value="#{palavrasBean.newP}"/><br/>
+                        <h:commandButton value="Adicionar" 
+                                         action="#{palavrasBean.addCategoria()}"/><br/>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    </h:body>
+</html>
+
