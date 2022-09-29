@@ -24,6 +24,9 @@ public class Ex1 {
                 .distinct()
                 .forEach(System.out::println);
         
+//        paralelo
+
+
     }
 
 }
