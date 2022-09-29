@@ -1,4 +1,4 @@
-package exercicios;
+package fluxos;
 
 /**
  * @author Binnur Kurt <binnur.kurt@gmail.com>

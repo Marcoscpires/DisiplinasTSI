@@ -1,19 +1,21 @@
-package exercicios;
+package fluxos;
 
 
 /**
  * @author Binnur Kurt <binnur.kurt@gmail.com>
  */
-public class Fish extends Animal implements Pet {
+public class Cat extends Animal implements Pet {
 	private String name;
-	
-	public Fish(String name) {
-		super(0);
-                this.name = name;
+
+	public Cat() {
+		this("Garfield");
 	}
 
-    
-        
+	public Cat(String name) {
+		super(4);
+		this.name = name;
+	}
+
 	@Override
 	public void setName(String name) {
 		this.name = name;
@@ -34,9 +36,4 @@ public class Fish extends Animal implements Pet {
 		System.out.println(String.format("%s is eating now...", name));
 	}
 
-	@Override
-	public void walk() {
-		System.out.println(String.format("%s is swimming now...", name));
-	}
-	
 }
