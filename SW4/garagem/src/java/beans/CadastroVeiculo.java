@@ -1,5 +1,6 @@
 package beans;
 
+import dao.MarcaDAO;
 import entidade.Marca;
 import entidade.Modelo;
 import entidade.Veiculo;
@@ -11,10 +12,14 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.model.SelectItem;
+import javax.inject.Inject;
 
 @Named(value = "cadastroVeiculo")
 @SessionScoped
 public class CadastroVeiculo implements Serializable {
+    
+    @Inject
+    MarcaDAO marcaDAO;
 
     private ArrayList<Veiculo> veiculos, filtrados;
     private Veiculo veiculo;
@@ -27,6 +32,10 @@ public class CadastroVeiculo implements Serializable {
 
     public Marca getMarcaEscolhida() {
         return marcaEscolhida;
+    }
+    
+    public List<SelectItem> getMarcasItems(){
+        return marcaDAO.getMarcasItens();
     }
 
     public void setMarcaEscolhida(Marca marcaEscolhida) {
