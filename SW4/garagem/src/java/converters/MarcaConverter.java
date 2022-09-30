@@ -1,6 +1,6 @@
 package converters;
 
-import beans.MarcasBean;
+import dao.MarcaDAO;
 import entidade.Marca;
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.component.UIComponent;
@@ -13,7 +13,7 @@ import javax.inject.Named;
 @Named(value="marcaConverter")
 public class MarcaConverter implements Converter {
     @Inject
-    MarcasBean mBean;
+    MarcaDAO marcaDAO;
    
     @Override
     public String getAsString(FacesContext context, 
@@ -30,7 +30,7 @@ public class MarcaConverter implements Converter {
             UIComponent component, String value) {
         try {
             int codigo = Integer.parseInt(value);
-            return mBean.buscarMarca( codigo );
+            return marcaDAO.buscarMarca( codigo );
         } catch(NumberFormatException nfe) { 
         }
         return null;

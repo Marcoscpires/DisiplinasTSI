@@ -34,7 +34,7 @@ public class CadastroVeiculo implements Serializable {
         return marcaEscolhida;
     }
     
-    public List<SelectItem> getMarcasItems(){
+    public List<SelectItem> getMarcasItens(){
         return marcaDAO.getMarcasItens();
     }
 
