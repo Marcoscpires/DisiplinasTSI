@@ -1,0 +1,190 @@
+d <- c(5,9,18,5,9,18,5,9,18,5,9,18,2,9,22,2,9,22,2,13,22,1,13,18,1,13,9)
+
+d_ordenado <- sort(d)
+d_ordenado[1:15]; d_ordenado[16:27]
+
+fa_1 <- length(d[d == 1])
+fa_2 <- length(d[d == 2])
+fa_3 <- length(d[d == 5])
+fa_4 <- length(d[d == 9])
+fa_5 <- length(d[d == 13])
+fa_6 <- length(d[d == 18])
+fa_7 <- length(d[d == 22])
+
+c(fa_1, fa_2, fa_3, fa_4, fa_5, fa_6, fa_7)
+
+Fa_1 <- fa_1
+Fa_2 <- fa_1 + fa_2
+Fa_3 <- fa_1 + fa_2 + fa_3
+Fa_4 <- fa_1 + fa_2 + fa_3 + fa_4
+Fa_5 <- fa_1 + fa_2 + fa_3 + fa_4 + fa_5
+Fa_6 <- fa_1 + fa_2 + fa_3 + fa_4 + fa_5 + fa_6
+Fa_7 <- fa_1 + fa_2 + fa_3 + fa_4 + fa_5 + fa_6 + fa_7
+
+c(Fa_1, Fa_2, Fa_3, Fa_4, Fa_5, Fa_6, Fa_7)
+
+options(digits=3)
+fr_1 <- fa_1/(length(d))
+fr_2 <- fa_2/(length(d))
+fr_3 <- fa_3/(length(d))
+fr_4 <- fa_4/(length(d))
+fr_5 <- fa_5/(length(d))
+fr_6 <- fa_6/(length(d))
+fr_7 <- fa_7/(length(d))
+
+c(fr_1, fr_2, fr_3, fr_4, fr_5, fr_6, fr_7)
+
+Fr_1 <- Fa_1/(length(d))
+Fr_2 <- Fa_2/(length(d))
+Fr_3 <- Fa_3/(length(d))
+Fr_4 <- Fa_4/(length(d))
+Fr_5 <- Fa_5/(length(d))
+Fr_6 <- Fa_6/(length(d))
+Fr_7 <- Fa_7/(length(d))
+
+
+c(Fr_1, Fr_2, Fr_3, Fr_4, Fr_5, Fr_6, Fr_7)
+
+fp_1 <- fa_1/(length(d))*100
+fp_2 <- fa_2/(length(d))*100
+fp_3 <- fa_3/(length(d))*100
+fp_4 <- fa_4/(length(d))*100
+fp_5 <- fa_5/(length(d))*100
+fp_6 <- fa_6/(length(d))*100
+fp_7 <- fa_7/(length(d))*100
+
+c(fp_1, fp_2, fp_3, fp_4, fp_5, fp_6, fp_7)
+
+Fp_1 <- fp_1
+Fp_2 <- fp_1 + fp_2
+Fp_3 <- fp_1 + fp_2 + fp_3
+Fp_4 <- fp_1 + fp_2 + fp_3 + fp_4
+Fp_5 <- fp_1 + fp_2 + fp_3 + fp_4 + fp_5
+Fp_6 <- fp_1 + fp_2 + fp_3 + fp_4 + fp_5 + fp_6
+Fp_7 <- fp_1 + fp_2 + fp_3 + fp_4 + fp_5 + fp_6 + fp_7
+
+c(Fp_1, Fp_2, Fp_3, Fp_4, Fp_5, Fp_6, Fp_7)
+
+#Tabela com as frequencias
+
+col_1 <- c(fa_1, fa_2, fa_3, fa_4, fa_5, fa_6, fa_7)
+col_2 <- c(Fa_1, Fa_2, Fa_3, Fa_4, Fa_5, Fa_6, Fa_7)
+col_3 <- c(fr_1, fr_2, fr_3, fr_4, fr_5, fr_6, fr_7)
+col_4 <- c(Fr_1, Fr_2, Fr_3, Fr_4, Fr_5, Fr_6, Fr_7)
+col_5 <- c(fp_1, fp_2, fp_3, fp_4, fp_5, fp_6, fp_7)
+col_6 <- c(Fp_1, Fp_2, Fp_3, Fp_4, Fp_5, Fp_6, Fp_7)
+
+tabela <- data.frame(col_1,col_2,col_3,col_4,col_5,col_6)
+colnames(tabela) <- c("fa", "Fa" ,"fr", "Fr", "fp", "Fp")
+tabela
+
+
+d <- c (13.9,27.3,16.5,21.0,21.9,15.2,7.7,12.4,19.3, 
+    15.3,18.6,26.5,16.3,16.5,16.8,12.6,16.1,19.5,
+    19.1,18.1,20.9,18.1,11.9,16.0,17.3,12.3,13.1,
+    15.0,20.2,15.4)
+
+d_ordenado <- sort(d)
+A_t <- max(d) - min(d)
+A_t 
+
+k <- round(sqrt(length(d)))
+k
+
+A_c <- A_t/k
+
+C1_inf <- min(d)
+C1_sup <- C1_inf + A_c
+c(C1_inf, C1_sup)
+
+C2_inf <- C1_sup
+C2_sup <- C2_inf + A_c
+c(C2_inf, C2_sup)
+
+C3_inf <- C2_sup
+C3_sup <- C3_inf + A_c
+c(C3_inf, C3_sup)
+
+C4_inf <- C3_sup
+C4_sup <- C4_inf + A_c
+c(C4_inf, C4_sup)
+
+C5_inf <- C4_sup
+C5_sup <- C5_inf + A_c
+c(C5_inf, C5_sup)
+
+C1_Medio <- (C1_inf + C1_sup)/2
+C2_Medio <- (C2_inf + C2_sup)/2
+C3_Medio <- (C3_inf + C3_sup)/2
+C4_Medio <- (C4_inf + C4_sup)/2
+C5_Medio <- (C5_inf + C5_sup)/2
+
+c(C1_Medio,C2_Medio,C3_Medio,C4_Medio,C5_Medio)
+
+C1_fa <- length(d[d >= C1_inf & d < C1_sup])
+C2_fa <- length(d[d >= C2_inf & d < C2_sup])
+C3_fa <- length(d[d >= C3_inf & d < C3_sup])
+C4_fa <- length(d[d >= C4_inf & d < C4_sup])
+C5_fa <- length(d[d >= C5_inf & d < C5_sup])
+
+c(C1_fa,C2_fa,C3_fa,C4_fa,C5_fa)
+
+
+C1_Fa <- C1_fa
+C2_Fa <- C1_fa + C2_fa
+C3_Fa <- C1_fa + C2_fa + C3_fa 
+C4_Fa <- C1_fa + C2_fa + C3_fa + C4_fa
+C5_Fa <- C1_fa + C2_fa + C3_fa + C4_fa + C5_fa
+
+c(C1_Fa, C2_Fa, C3_Fa, C4_Fa, C5_Fa)
+
+options(digits=3)
+C1_fr <- C1_fa/(length(d))
+C2_fr <- C2_fa/(length(d))
+C3_fr <- C3_fa/(length(d))
+C4_fr <- C4_fa/(length(d))
+C5_fr <- C5_fa/(length(d))
+
+c(C1_fr, C2_fr, C3_fr, C4_fr, C5_fr)
+
+C1_Fr <- C1_Fa/(length(d))
+C2_Fr <- C2_Fa/(length(d))
+C3_Fr <- C3_Fa/(length(d))
+C4_Fr <- C4_Fa/(length(d))
+C5_Fr <- C5_Fa/(length(d))
+
+c(C1_Fr, C2_Fr, C3_Fr, C4_Fr, C5_Fr)
+
+C1_fp <- C1_fa/(length(d))*100
+C2_fp <- C2_fa/(length(d))*100
+C3_fp <- C3_fa/(length(d))*100
+C4_fp <- C4_fa/(length(d))*100
+C5_fp <- C5_fa/(length(d))*100
+
+c(C1_fp, C2_fp, C3_fp, C4_fp, C5_fp)
+
+C1_Fp <- C1_fp
+C2_Fp <- C1_fp + C2_fp
+C3_Fp <- C1_fp + C2_fp + C3_fp 
+C4_Fp <- C1_fp + C2_fp + C3_fp + C4_fp
+C5_Fp <- C1_fp + C2_fp + C3_fp + C4_fp + C5_fp
+
+c(C1_Fp, C2_Fp, C3_Fp, C4_Fp, C5_Fp)
+
+col_1 <- c(C1_inf, C2_inf, C3_inf, C4_inf, C5_inf)
+col_2 <- c(C1_sup, C2_sup, C3_sup, C4_sup, C5_sup)
+col_3 <- c(C1_Medio,C2_Medio,C3_Medio,C4_Medio,C5_Medio)
+col_4 <- c(C1_fa, C2_fa, C3_fa, C4_fa, C5_fa)
+col_5 <- c(C1_Fa, C2_Fa, C3_Fa, C4_Fa, C5_Fa)
+col_6 <- c(C1_fr, C2_fr, C3_fr, C4_fr, C5_fr)
+col_7 <- c(C1_Fr, C2_Fr, C3_Fr, C4_Fr, C5_Fr)
+col_8 <- c(C1_fp, C2_fp, C3_fp, C4_fp, C5_fp)
+col_9 <- c(C1_Fp, C2_Fp, C3_Fp, C4_Fp, C5_Fp)
+
+tabela <- data.frame(col_1,col_2,col_3,col_4,col_5,
+               col_6,col_7,col_8,col_9)
+
+colnames(tabela) <- c("Clas_Min","Clas_Max","Medio","fa","Fa",
+                 "fr","Fr","fp","Fp")
+
+tabela

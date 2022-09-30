@@ -90,7 +90,7 @@
                 <h:form>
                     <p:commandButton value="X" update=":tabVeiculos"                                     
                                      action="#{cadastroVeiculo.remover(v)}">
-                        <p:confirm message="Remover este veículo?" rendered="false"/>
+                        <p:confirm message="Remover este veículo?"/>
                     </p:commandButton>
                     <p:commandButton value="Editar" update=":cadForm:pnlForm"
                                      action="#{cadastroVeiculo.editar(v)}"/>
