@@ -5,10 +5,12 @@
  */
 package filtro;
 
+import beans.UserBean;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import javax.inject.Inject;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -16,6 +18,8 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -23,6 +27,9 @@ import javax.servlet.annotation.WebFilter;
  */
 @WebFilter(filterName = "AdminFilter", urlPatterns = {"/faces/admin/*"})
 public class AdminFilter implements Filter {
+    
+    @Inject
+    UserBean userbean;
     
     private static final boolean debug = true;
 
@@ -63,19 +70,17 @@ public class AdminFilter implements Filter {
         
         Throwable problem = null;
         try {
+            HttpServletRequest req = (HttpServletRequest) request;
+            HttpServletResponse resp = (HttpServletResponse) response;
+            if(userbean == null || !userbean.isLogado())
+               resp.sendRedirect("/garagem/faces/login.xhtml");         
             chain.doFilter(request, response);
         } catch (Throwable t) {
-            // If an exception is thrown somewhere down the filter chain,
-            // we still want to execute our after processing, and then
-            // rethrow the problem after that.
             problem = t;
             t.printStackTrace();
         }
         
         doAfterProcessing(request, response);
-
-        // If there was a problem, we want to rethrow it if it is
-        // a known type, otherwise log it.
         if (problem != null) {
             if (problem instanceof ServletException) {
                 throw (ServletException) problem;
@@ -87,18 +92,11 @@ public class AdminFilter implements Filter {
         }
     }
 
-    /**
-     * Return the filter configuration object for this filter.
-     */
+    
     public FilterConfig getFilterConfig() {
         return (this.filterConfig);
     }
 
-    /**
-     * Set the filter configuration object for this filter.
-     *
-     * @param filterConfig The filter configuration object
-     */
     public void setFilterConfig(FilterConfig filterConfig) {
         this.filterConfig = filterConfig;
     }
