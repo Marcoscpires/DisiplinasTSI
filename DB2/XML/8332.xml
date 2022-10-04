@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<dblpperson name="Fabio A. Spanhol" pid="181/8332" n="5">
+<person key="homepages/181/8332" mdate="2016-11-11">
+<author pid="181/8332">Fabio A. Spanhol</author>
+<author pid="181/8332">Fabio Alexandre Spanhol</author>
+</person>
+<r><article key="journals/jisa/CamargoSS21" mdate="2022-01-03">
+<author orcid="0000-0002-6520-9142" pid="191/8140">Edson Tavares de Camargo</author>
+<author orcid="0000-0002-9603-8067" pid="181/8332">Fabio Alexandre Spanhol</author>
+<author pid="116/3086">&#193;lvaro Ricieri Castro e Souza</author>
+<title>Deployment of a LoRaWAN network and evaluation of tracking devices in the context of smart cities.</title>
+<pages>8</pages>
+<year>2021</year>
+<volume>12</volume>
+<journal>J. Internet Serv. Appl.</journal>
+<number>1</number>
+<ee type="oa">https://doi.org/10.1186/s13174-021-00138-7</ee>
+<url>db/journals/jisa/jisa12.html#CamargoSS21</url>
+</article>
+</r>
+<r><article key="journals/eswa/SudharshanPSOHH19" mdate="2020-10-26">
+<author orcid="0000-0002-7888-2846" pid="228/7626">P. J. Sudharshan</author>
+<author orcid="0000-0003-0013-5370" pid="13/1045">Caroline Petitjean</author>
+<author orcid="0000-0002-9603-8067" pid="181/8332">Fabio A. Spanhol</author>
+<author orcid="0000-0002-0595-5370" pid="o/LuizSOliveira">Luiz Eduardo Soares de Oliveira</author>
+<author pid="48/6785">Laurent Heutte</author>
+<author orcid="0000-0002-3042-183X" pid="53/7011">Paul Honeine</author>
+<title>Multiple instance learning for histopathological breast cancer image classification.</title>
+<pages>103-111</pages>
+<year>2019</year>
+<volume>117</volume>
+<journal>Expert Syst. Appl.</journal>
+<ee>https://doi.org/10.1016/j.eswa.2018.09.049</ee>
+<url>db/journals/eswa/eswa117.html#SudharshanPSOHH19</url>
+</article>
+</r>
+<r><inproceedings key="conf/smc/SpanholOCPH17" mdate="2019-09-16">
+<author orcid="0000-0002-9603-8067" pid="181/8332">Fabio A. Spanhol</author>
+<author pid="o/LuizSOliveira">Luiz S. Oliveira</author>
+<author pid="20/3269">Paulo R. Cavalin</author>
+<author pid="13/1045">Caroline Petitjean</author>
+<author pid="48/6785">Laurent Heutte</author>
+<title>Deep features for breast cancer histopathological image classification.</title>
+<pages>1868-1873</pages>
+<year>2017</year>
+<booktitle>SMC</booktitle>
+<ee>https://doi.org/10.1109/SMC.2017.8122889</ee>
+<crossref>conf/smc/2017</crossref>
+<url>db/conf/smc/smc2017.html#SpanholOCPH17</url>
+</inproceedings>
+</r>
+<r><article key="journals/tbe/SpanholOPH16" mdate="2020-09-02">
+<author orcid="0000-0002-9603-8067" pid="181/8332">Fabio A. Spanhol</author>
+<author pid="o/LuizSOliveira">Luiz S. Oliveira</author>
+<author pid="13/1045">Caroline Petitjean</author>
+<author pid="48/6785">Laurent Heutte</author>
+<title>A Dataset for Breast Cancer Histopathological Image Classification.</title>
+<pages>1455-1462</pages>
+<year>2016</year>
+<volume>63</volume>
+<journal>IEEE Trans. Biomed. Eng.</journal>
+<number>7</number>
+<ee>https://doi.org/10.1109/TBME.2015.2496264</ee>
+<ee>https://www.wikidata.org/entity/Q40352168</ee>
+<url>db/journals/tbe/tbe63.html#SpanholOPH16</url>
+</article>
+</r>
+<r><inproceedings key="conf/ijcnn/SpanholOPH16" mdate="2019-09-16">
+<author orcid="0000-0002-9603-8067" pid="181/8332">Fabio Alexandre Spanhol</author>
+<author pid="o/LuizSOliveira">Luiz S. Oliveira</author>
+<author pid="13/1045">Caroline Petitjean</author>
+<author pid="48/6785">Laurent Heutte</author>
+<title>Breast cancer histopathological image classification using Convolutional Neural Networks.</title>
+<pages>2560-2567</pages>
+<year>2016</year>
+<booktitle>IJCNN</booktitle>
+<ee>https://doi.org/10.1109/IJCNN.2016.7727519</ee>
+<crossref>conf/ijcnn/2016</crossref>
+<url>db/conf/ijcnn/ijcnn2016.html#SpanholOPH16</url>
+</inproceedings>
+</r>
+<coauthors n="8" nc="2">
+<co c="1"><na f="c/Camargo:Edson_Tavares_de" pid="191/8140">Edson Tavares de Camargo</na></co>
+<co c="0" n="2"><na f="c/Cavalin:Paulo_Rodrigo" pid="20/3269">Paulo Rodrigo Cavalin</na><na>Paulo R. Cavalin</na></co>
+<co c="0"><na f="h/Heutte:Laurent" pid="48/6785">Laurent Heutte</na></co>
+<co c="0"><na f="h/Honeine:Paul" pid="53/7011">Paul Honeine</na></co>
+<co c="0" n="2"><na f="o/Oliveira:Luiz_Eduardo_Soares_de" pid="o/LuizSOliveira">Luiz Eduardo Soares de Oliveira</na><na>Luiz S. Oliveira</na></co>
+<co c="0"><na f="p/Petitjean:Caroline" pid="13/1045">Caroline Petitjean</na></co>
+<co c="1"><na f="s/Souza:=Aacute=lvaro_Ricieri_Castro_e" pid="116/3086">&#193;lvaro Ricieri Castro e Souza</na></co>
+<co c="0"><na f="s/Sudharshan:P=_J=" pid="228/7626">P. J. Sudharshan</na></co>
+</coauthors>
+</dblpperson>
+
