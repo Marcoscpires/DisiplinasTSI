@@ -53,3 +53,4 @@ boxplot(x)
 #Coeficiente de Pearson
 library(moments)
 x_as <- skewness(x)
+x_as
