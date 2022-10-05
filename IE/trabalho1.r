@@ -10,46 +10,46 @@ x_med <- x_sum/x_len
 x_med
 
 #mediana
-
 x_mediana <- median(x)
 x_mediana
 
 #moda
-
 x_tab <- as.matrix(table(x))
 x_mod <- subset(x_tab, x_tab[ , 1] == max(x_tab[ , 1]))
 x_mod
 
 #02
 #variança
-
 x_var <- var(x)
 x_var
 
 #desvio padrão:
-
 x_sd <- sd(x)
 x_sd
 
 #coeficiente de variação:
-
 x_cv <- sd(x)/mean(x)*100
 x_cv
 
 #03
 #quartis
-
 x_qua <- quantile(x)
 x_qua
 
 #limites superior
-
 x_LI <- quantile(x)[2] - 1.5*(quantile(x)[4] - quantile(x)[2])
 x_LI <- as.numeric(x_LI)
 x_LI
 
 #limites inferior
-
 x_LS <- quantile(x)[4] + 1.5*(quantile(x)[4] - quantile(x)[2])
 x_LS <- as.numeric(x_LS)
 x_LS
+
+#boxplot
+par(mar = c(3,2,1,1))
+boxplot(x)
+
+#Coeficiente de Pearson
+library(moments)
+x_as <- skewness(x)
