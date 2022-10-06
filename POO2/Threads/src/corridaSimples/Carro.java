@@ -1,4 +1,4 @@
-package dados;
+package corridaSimples;
 
 import java.security.SecureRandom;
 import java.time.Instant;

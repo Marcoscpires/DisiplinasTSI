@@ -1,4 +1,4 @@
-package dados;
+package corridaSimples;
 
 
 public class Main {

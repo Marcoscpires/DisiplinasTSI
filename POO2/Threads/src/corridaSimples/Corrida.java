@@ -1,4 +1,4 @@
-package dados;
+package corridaSimples;
 
 import java.util.ArrayList;
 import java.util.Comparator;
