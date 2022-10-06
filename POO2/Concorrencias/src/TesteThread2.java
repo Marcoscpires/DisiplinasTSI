@@ -10,6 +10,6 @@ public class TesteThread2 implements Runnable {
     }
     @Override
     public void run(){
-        System.out.println("Marcos");        
+        System.out.println("Olá Thread");        
     }
 }

@@ -24,8 +24,6 @@ public class ExemploThread {
                 e.printStackTrace();
             }
         });
-
-
         System.out.println("fim");
 
     }
