@@ -41,9 +41,4 @@ public class Carro implements Runnable{
         }
         System.out.println("O carro " + id + " terminou no tempo: " + (tempo = Instant.now()));
     }
-
-    public static void main(String[] args) {
-
-    }
-
 }
