@@ -3,8 +3,7 @@ package entidade;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Veiculo
-        implements Serializable {
+public class Veiculo implements Serializable {
     private String placa;
     private String cor;
     private int anoFabricacao;

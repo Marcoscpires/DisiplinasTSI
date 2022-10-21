@@ -12,8 +12,9 @@ import javax.inject.Named;
 @ApplicationScoped
 @Named(value="marcaConverter")
 public class MarcaConverter implements Converter {
+    
     @Inject
-    MarcaDAO marcaDAO;
+    MarcaDAO mBean;
    
     @Override
     public String getAsString(FacesContext context, 
@@ -30,7 +31,7 @@ public class MarcaConverter implements Converter {
             UIComponent component, String value) {
         try {
             int codigo = Integer.parseInt(value);
-            return marcaDAO.buscarMarca( codigo );
+            return mBean.buscarMarca( codigo );
         } catch(NumberFormatException nfe) { 
         }
         return null;

@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package filtro;
+package filtros;
 
 import beans.UserBean;
 import java.io.IOException;
@@ -21,10 +16,6 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author aluno
- */
 @WebFilter(filterName = "AdminFilter", urlPatterns = {"/faces/admin/*"})
 public class AdminFilter implements Filter {
     
@@ -33,9 +24,6 @@ public class AdminFilter implements Filter {
     
     private static final boolean debug = true;
 
-    // The filter configuration object we are associated with.  If
-    // this value is null, this filter instance is not currently
-    // configured. 
     private FilterConfig filterConfig = null;
     
     public AdminFilter() {
@@ -46,7 +34,6 @@ public class AdminFilter implements Filter {
         if (debug) {
             log("AdminFilter:DoBeforeProcessing");
         }
-
     }    
     
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
@@ -54,10 +41,17 @@ public class AdminFilter implements Filter {
         if (debug) {
             log("AdminFilter:DoAfterProcessing");
         }
-
-        
     }
 
+    /**
+     *
+     * @param request The servlet request we are processing
+     * @param response The servlet response we are creating
+     * @param chain The filter chain we are processing
+     *
+     * @exception IOException if an input/output error occurs
+     * @exception ServletException if a servlet error occurs
+     */
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
@@ -71,9 +65,9 @@ public class AdminFilter implements Filter {
         Throwable problem = null;
         try {
             HttpServletRequest req = (HttpServletRequest) request;
-            HttpServletResponse resp = (HttpServletResponse) response;
-            if(userbean == null || !userbean.isLogado())
-               resp.sendRedirect("/garagem/faces/login.xhtml");         
+            HttpServletResponse resp = (HttpServletResponse) response;            
+            if (userbean == null || !userbean.isLogado())
+                resp.sendRedirect("/garagem/faces/login.xhtml");
             chain.doFilter(request, response);
         } catch (Throwable t) {
             problem = t;
@@ -81,6 +75,7 @@ public class AdminFilter implements Filter {
         }
         
         doAfterProcessing(request, response);
+
         if (problem != null) {
             if (problem instanceof ServletException) {
                 throw (ServletException) problem;
@@ -92,11 +87,18 @@ public class AdminFilter implements Filter {
         }
     }
 
-    
+    /**
+     * Return the filter configuration object for this filter.
+     */
     public FilterConfig getFilterConfig() {
         return (this.filterConfig);
     }
 
+    /**
+     * Set the filter configuration object for this filter.
+     *
+     * @param filterConfig The filter configuration object
+     */
     public void setFilterConfig(FilterConfig filterConfig) {
         this.filterConfig = filterConfig;
     }

@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/marco/OneDrive/Área%20de%20Trabalho/TSI/SW4/veterinaria/src/java/dao/ConsultaDAO.java</file>
-            <file>file:/C:/Users/marco/OneDrive/Área%20de%20Trabalho/TSI/SW4/veterinaria/src/java/entidade/Veterinario.java</file>
-            <file>file:/C:/Users/marco/OneDrive/Área%20de%20Trabalho/TSI/SW4/veterinaria/src/java/beans/AnimalBean.java</file>
-            <file>file:/C:/Users/marco/OneDrive/Área%20de%20Trabalho/TSI/SW4/veterinaria/src/java/beans/MarcarConsulta.java</file>
-            <file>file:/C:/Users/marco/OneDrive/Área%20de%20Trabalho/TSI/SW4/veterinaria/src/java/entidade/Animal.java</file>
-            <file>file:/C:/Users/marco/OneDrive/Área%20de%20Trabalho/TSI/SW4/veterinaria/src/java/dao/AnimalDAO.java</file>
+            <file>file:/C:/Users/TI/Desktop/TSI/SW4/veterinaria/src/java/converters/AnimalConverter.java</file>
+            <file>file:/C:/Users/TI/Desktop/TSI/SW4/veterinaria/src/java/beans/MarcarConsulta.java</file>
+            <file>file:/C:/Users/TI/Desktop/TSI/SW4/veterinaria/src/java/entidade/Consulta.java</file>
+            <file>file:/C:/Users/TI/Desktop/TSI/SW4/veterinaria/web/index.xhtml</file>
         </group>
     </open-files>
 </project-private>

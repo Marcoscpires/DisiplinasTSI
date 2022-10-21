@@ -14,13 +14,13 @@ import javax.inject.Named;
 public class ModeloConverter implements Converter {
 
     @Inject
-    MarcaDAO marcaDAO;
+    MarcaDAO marcaBean;
     
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         try {
             int id = Integer.parseInt( value );
-            return marcaDAO.buscarModelo( id );
+            return marcaBean.buscarModelo( id );
         } catch(NumberFormatException ex) { }
         return null;
     }

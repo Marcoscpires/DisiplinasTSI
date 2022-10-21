@@ -8,7 +8,26 @@
         <title>Bicho BÃO - Consultas</title>
     </h:head>
     <h:body>
-        
+        <h:form id="conForm">
+            <p:panelGrid columns="2" id="pnlForm">
+                <p:outputLabel for="edAnimal" value="Tipo de Animal:"/>
+                <p:selectOneMenu value="#{marcarConsulta.animalEscolhido}"
+                                 required="true" requiredMessage="Selecione um tipo de animal"
+                                 converter="#{animalConverter}"
+                                 id="edAnimal">
+                    <f:selectItems value="#{marcarConsulta.animais}"/>
+                    <p:ajax event="change" update="edVeterinario"/>
+                </p:selectOneMenu>
+            
+            <p:outputLabel for="edVeterinario" value="Veterinario:"/>
+                <p:selectOneMenu value="#{marcarConsulta.consulta.veterinario}"
+                                 id="edVeterinario" required="true" 
+                                 converter="#{veterinarioConverter}"
+                                 requiredMessage="Selecione um veterinario">
+                    <f:selectItems value="#{marcarConsulta.veterinariosCorrespondentes}"/>
+                </p:selectOneMenu>
+            </p:panelGrid>
+        </h:form>
     </h:body>
 </html>
 

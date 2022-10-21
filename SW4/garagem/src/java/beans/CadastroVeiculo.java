@@ -1,6 +1,8 @@
 package beans;
 
 import dao.MarcaDAO;
+import dao.VeiculoDAO;
+import dao.VeiculoJaCadastrado;
 import entidade.Marca;
 import entidade.Modelo;
 import entidade.Veiculo;
@@ -11,17 +13,22 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
 @Named(value = "cadastroVeiculo")
 @SessionScoped
 public class CadastroVeiculo implements Serializable {
-    
+
     @Inject
     MarcaDAO marcaDAO;
-
-    private ArrayList<Veiculo> veiculos, filtrados;
+    
+    @Inject
+    VeiculoDAO veiculoDAO;
+  
+    private ArrayList<Veiculo> filtrados;
     private Veiculo veiculo;
     private boolean editando = false;
     private Marca marcaEscolhida, marcaFiltro;
@@ -34,7 +41,7 @@ public class CadastroVeiculo implements Serializable {
         return marcaEscolhida;
     }
     
-    public List<SelectItem> getMarcasItens(){
+    public List<SelectItem> getMarcasItens() {
         return marcaDAO.getMarcasItens();
     }
 
@@ -43,17 +50,9 @@ public class CadastroVeiculo implements Serializable {
     }
 
     @PostConstruct
-    public void init() {
-        veiculos = new ArrayList<>();
+    public void init() {        
+        // Neste ponto, os daos já foram injetados. Poderiam ser usados.
         veiculo = new Veiculo();
-    }
-
-    public ArrayList<Veiculo> getVeiculos() {
-        return veiculos;
-    }
-
-    public void setVeiculos(ArrayList<Veiculo> veiculos) {
-        this.veiculos = veiculos;
     }
 
     public Veiculo getVeiculo() {
@@ -66,7 +65,12 @@ public class CadastroVeiculo implements Serializable {
 
     public String confirmar() {
         if (!editando) {
-            veiculos.add(veiculo);
+            try {
+                veiculoDAO.incluir(veiculo);
+            } catch(VeiculoJaCadastrado vjc) {
+                FacesContext.getCurrentInstance().addMessage(null, 
+                        new FacesMessage("Placa já cadastrada!"));
+            }
         }
         editando = false;
         veiculo = new Veiculo();
@@ -75,7 +79,7 @@ public class CadastroVeiculo implements Serializable {
     }
 
     public void remover(Veiculo veic) {
-        veiculos.remove(veic);
+        veiculoDAO.remover(veic);
         filtrados.remove(veic);
     }
 
@@ -135,25 +139,7 @@ public class CadastroVeiculo implements Serializable {
     }
 
     public String filtrar() {
-        if (marcaFiltro == null) {
-            filtrados = veiculos;
-        } else {
-            filtrados = new ArrayList<Veiculo>();
-            for (Veiculo v : veiculos) {
-                if (v.getModelo().getMarca().equals(marcaFiltro)) {
-                    filtrados.add(v);
-                }
-            }
-        }
-        if (anoInicio > 0 && anoFim > 0) {
-            ArrayList<Veiculo> filtroAnos = new ArrayList<>();
-            for (Veiculo v : filtrados) {
-                if (v.getAnoFabricacao() >= anoInicio && v.getAnoFabricacao() <= anoFim) {
-                    filtroAnos.add(v);
-                }
-            }
-            filtrados = filtroAnos;
-        }
+        filtrados = veiculoDAO.buscar(marcaFiltro, anoInicio, anoFim);
         return null;
     }
 }

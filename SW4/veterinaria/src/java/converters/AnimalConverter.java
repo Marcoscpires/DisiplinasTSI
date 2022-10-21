@@ -38,7 +38,8 @@ public class AnimalConverter implements Converter {
     public Object getAsObject(FacesContext context,
             UIComponent component, String value) {
         try {
-            return aBean.buscarAnimal( Integer.parseInt(value) );
+            int codigo = Integer.parseInt(value);
+            return aBean.buscarAnimal( codigo);
         } catch(NumberFormatException nfe) { 
         }
         return null;

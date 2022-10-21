@@ -11,11 +11,11 @@ public class UserBean implements Serializable {
     private boolean logado = false;
     private String userName, password;
     
-    public UserBean() {}
+    public UserBean() { }
     
-    public String logar(){
-        if("marcos".equals(userName) &&
-           "30082001,".equals(password)){
+    public String logar() {
+        if ("admin".equals(userName) && 
+            "123456".equals(password)) {
             logado = true;
             return "admin/cad_marcas.xhtml";
         }
@@ -45,6 +45,5 @@ public class UserBean implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    
     
 }

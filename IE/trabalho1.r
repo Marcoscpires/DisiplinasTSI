@@ -265,13 +265,11 @@ colnames(tabela) <- c("fa", "Fa", "fr", "Fr", "fp", "Fp")
 tabela
 
 #07
-hist(x, main = "Histograma")
-
-hist(x, breaks = 30, main="Histograma", axes=F, xlab="", ylab="")
-axis(side=1, at=seq(1, 94, by=3))
-axis(side=2, at=seq(0, 7, by=1))
-
 valor <- unique(sort(x))
 freq <- cbind(valor, fa)
-plot(freq, axes=T, type="b", xlab="", ylab="")
+hist(x, breaks = 30, main="Histograma", axes=F, xlab="", ylab="")
+axis(side=1, at=seq(1, 94, by=2))
+axis(side=2, at=seq(0, 7, by=1))
+lines(freq, type="b")
+
 

@@ -101,7 +101,7 @@ public class MarcarConsulta implements Serializable {
         return null;
     }
 
-    public List<SelectItem> getVeterinariosSelecionado() {
+    public List<SelectItem> getVeterinariosCorrespondentes() {
         if (animalEscolhido == null) {
             return new LinkedList<>();
         }
