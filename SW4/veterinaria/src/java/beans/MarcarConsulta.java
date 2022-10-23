@@ -31,9 +31,9 @@ public class MarcarConsulta implements Serializable {
     private ArrayList<Consulta> consultas;
     private Consulta consulta;
     private boolean editando = false;
-    private Animal animalEscolhido, animalFiltro;
-    
+    private Animal animalEscolhido;
 
+         
     public MarcarConsulta() {
     }
 
@@ -112,15 +112,7 @@ public class MarcarConsulta implements Serializable {
 
     public void setConsultas(ArrayList<Consulta> consultas) {
         this.consultas = consultas;
-    }
-
-    public Animal getAnimalFiltro() {
-        return animalFiltro;
-    }
-
-    public void setAnimalFiltro(Animal animalFiltro) {
-        this.animalFiltro = animalFiltro;
-    }
+    }                
     
     public String tabela() {
         consultas = consultaDAO.buscar();
