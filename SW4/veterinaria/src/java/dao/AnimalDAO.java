@@ -8,8 +8,8 @@ import javax.faces.model.SelectItem;
 
 public class AnimalDAO implements Serializable {
 
-    private static LinkedList<Animal> animal = null;
-    private static LinkedList<SelectItem> animais = null;
+    private static LinkedList<Animal> animal;
+    private static LinkedList<SelectItem> animais;
 
     public AnimalDAO() {
         System.out.println("Criando MarcaDAO");
@@ -38,9 +38,9 @@ public class AnimalDAO implements Serializable {
             animal.add(a);
         }
         animais = new LinkedList<>();
-        animais.add(new SelectItem(null, "Selecione a marca"));
-        for (Animal an : animal) {
-            animais.add(new SelectItem(an, an.getEspecie()));
+        animais.add(new SelectItem(null, "Selecion um Animal"));
+        for (Animal a : animal) {
+            animais.add(new SelectItem(a, a.getEspecie()));
         }
     }
 

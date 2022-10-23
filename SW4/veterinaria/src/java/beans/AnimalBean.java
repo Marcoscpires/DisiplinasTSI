@@ -33,7 +33,7 @@ public class AnimalBean {
     }
 
     @Produces
-    public ConsultaDAO getVeiculoDAO() {
+    public ConsultaDAO getCosultaDAO() {
         if (consultaDAO == null) {
             consultaDAO = new ConsultaDAO();
         }
