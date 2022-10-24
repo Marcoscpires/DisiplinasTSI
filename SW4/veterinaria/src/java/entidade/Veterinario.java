@@ -4,12 +4,13 @@ package entidade;
 import java.io.Serializable;
 
 public class Veterinario implements Serializable {
+    private static int count = 0;
     private int id;
     private String nome;
     private Animal animal;
 
-    public Veterinario(int id, String nome, Animal animal) {
-        this.id = id;
+    public Veterinario(String nome, Animal animal) {
+        this.id = ++count;
         this.nome = nome;
         this.animal = animal;
     }

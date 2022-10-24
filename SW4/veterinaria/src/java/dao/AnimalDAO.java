@@ -16,25 +16,25 @@ public class AnimalDAO implements Serializable {
         System.out.flush();
         if (animal == null) {
             animal = new LinkedList<>();
-            Animal a = new Animal(1, "Gato");
-            a.adicionarVeterinario(1, "Lucas");
-            a.adicionarVeterinario(2, "Thiago");
-            a.adicionarVeterinario(3, "Kamila");
-            a.adicionarVeterinario(4, "Marco");
+            Animal a = new Animal("Gato");
+            a.adicionarVeterinario("Lucas");
+            a.adicionarVeterinario("Thiago");
+            a.adicionarVeterinario("Kamila");
+            a.adicionarVeterinario("Marco");
             animal.add(a);
 
-            a = new Animal(2, "Cachorro");
-            a.adicionarVeterinario(10, "Diogo");
-            a.adicionarVeterinario(11, "Eduarda");
-            a.adicionarVeterinario(12, "Flavia");
-            a.adicionarVeterinario(13, "Marcelo");
+            a = new Animal("Cachorro");
+            a.adicionarVeterinario("Diogo");
+            a.adicionarVeterinario("Eduarda");
+            a.adicionarVeterinario("Flavia");
+            a.adicionarVeterinario("Marcelo");
             animal.add(a);
 
-            a = new Animal(3, "Aves");
-            a.adicionarVeterinario(20, "Jessica");
-            a.adicionarVeterinario(21, "Rose");
-            a.adicionarVeterinario(22, "Patrick");
-            a.adicionarVeterinario(23, "Leticia");
+            a = new Animal("Aves");
+            a.adicionarVeterinario("Jessica");
+            a.adicionarVeterinario("Rose");
+            a.adicionarVeterinario("Patrick");
+            a.adicionarVeterinario("Leticia");
             animal.add(a);
         }
         animais = new LinkedList<>();
@@ -63,11 +63,23 @@ public class AnimalDAO implements Serializable {
         }
         return null;
     }
+
+    public void incluir(Animal a) throws AnimalJaCadastrado {
+            if (animal.contains(a)) {
+                throw new AnimalJaCadastrado();
+            }
+            animal.add(a); 
+            animais.add(new SelectItem(a, a.getEspecie()));
+    }
     
+     public void incluirVet(Animal a,String vet){
+         a.adicionarVeterinario(vet);
+     }
+
     public LinkedList<SelectItem> getAnimais() {
         return animais;
     }
-    
+
     public static LinkedList<Animal> getAnimal() {
         return animal;
     }
@@ -75,7 +87,5 @@ public class AnimalDAO implements Serializable {
     public static void setAnimal(LinkedList<Animal> animal) {
         AnimalDAO.animal = animal;
     }
-
-   
 
 }

@@ -6,12 +6,13 @@ import java.util.Objects;
 
 public class Animal implements Serializable {
 
+    private static int count = 0;
     private int id;
     private String especie;
     private LinkedList<Veterinario> veterinarios;
 
-    public Animal(int id, String especie) {
-        this.id = id;
+    public Animal(String especie) {
+        this.id = ++count;
         this.especie = especie;
         veterinarios =  new LinkedList<>();
     }
@@ -69,9 +70,9 @@ public class Animal implements Serializable {
         return true;
     }
     
-     public void adicionarVeterinario(int idVeterinario, String nome) {
-        Veterinario m = new Veterinario(idVeterinario, nome, this);
-        veterinarios.add( m );
+     public void adicionarVeterinario( String nome) { 
+        Veterinario m = new Veterinario( nome, this);
+        this.veterinarios.add( m );
     }
     
                       
