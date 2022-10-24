@@ -1,12 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSF/JSFManagedBean.java to edit this template
- */
 package beans;
 
 import dao.AnimalDAO;
 import dao.ConsultaDAO;
-import dao.ConsultaJaMarcada;
+import dao.HorarioIndisponivel;
 import entidade.Animal;
 import entidade.Consulta;
 import entidade.Veterinario;
@@ -22,10 +18,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
-/**
- *
- * @author marco
- */
 @Named(value = "marcarConsulta")
 @SessionScoped
 public class MarcarConsulta implements Serializable {
@@ -36,11 +28,12 @@ public class MarcarConsulta implements Serializable {
     @Inject
     ConsultaDAO consultaDAO;
   
-    private ArrayList<Consulta> filtrados;
+    private ArrayList<Consulta> consultas;
     private Consulta consulta;
     private boolean editando = false;
-    private Animal animalEscolhido, animalFiltro;
+    private Animal animalEscolhido;
 
+         
     public MarcarConsulta() {
     }
 
@@ -74,20 +67,20 @@ public class MarcarConsulta implements Serializable {
         if (!editando) {
             try {
                 consultaDAO.incluir(consulta);
-            } catch(ConsultaJaMarcada cjm) {
+            } catch(HorarioIndisponivel hi) {
                 FacesContext.getCurrentInstance().addMessage(null, 
-                        new FacesMessage("Essa consulta já foi marcada"));
+                        new FacesMessage("Esse Veterinario já tem uma consulta marcada nesse horario"));
             }
         }
         editando = false;
+        tabela();
         consulta = new Consulta();
-//      filtrar();
         return null;
-    }
+        }
 
     public void remover(Consulta cons) {
         consultaDAO.remover(cons);
-        filtrados.remove(cons);
+        consultas.remove(cons);
     }
 
     public void editar(Consulta c) {
@@ -113,20 +106,17 @@ public class MarcarConsulta implements Serializable {
         return itens;
     }
 
-    public ArrayList<Consulta> getFiltrados() {
-        return filtrados;
+    public ArrayList<Consulta> getConsultas() {
+        return consultas;
     }
 
-    public void setFiltrados(ArrayList<Consulta> filtrados) {
-        this.filtrados = filtrados;
-    }
-
-    public Animal getAnimalFiltro() {
-        return animalFiltro;
-    }
-
-    public void setAnimalFiltro(Animal animalFiltro) {
-        this.animalFiltro = animalFiltro;
+    public void setConsultas(ArrayList<Consulta> consultas) {
+        this.consultas = consultas;
+    }                
+    
+    public String tabela() {
+        consultas = consultaDAO.buscar();
+        return null;
     }
 
 //    public int getAnoInicio() {
@@ -145,8 +135,5 @@ public class MarcarConsulta implements Serializable {
 //        this.anoFim = anoFim;
 //    }
 //
-//    public String filtrar() {
-//        filtrados = consultaDAO.buscar(animalFiltro, anoInicio, anoFim);
-//        return null;
-//    }
+    
 }

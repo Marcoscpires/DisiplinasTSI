@@ -1,3 +1,4 @@
+
 package entidade;
 
 import java.io.Serializable;

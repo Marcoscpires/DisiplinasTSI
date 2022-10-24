@@ -26,8 +26,85 @@
                                  requiredMessage="Selecione um veterinario">
                     <f:selectItems value="#{marcarConsulta.veterinariosCorrespondentes}"/>
                 </p:selectOneMenu>
+             <p:outputLabel for="edTutor" value="Tutor:"/>
+             <p:inputText value="#{marcarConsulta.consulta.tutor}"
+                             id="edTutor" required="true" 
+                             requiredMessage="Selecione um veterinario"/>
+                 <p:outputLabel for="edNAnimal" value="Nome do Animal"/>
+                 <p:inputText value="#{marcarConsulta.consulta.nomepet}"
+                             id="edNAnimal" required="true" 
+                             requiredMessage="Selecione um veterinario"/>
+                 <p:outputLabel for="edMotivo" value="Motivo:"/>
+                 <p:inputText value="#{marcarConsulta.consulta.motivo}"
+                             id="edMotivo"/>
+            <p:outputLabel for="edTeTutor" value="Telefone do Tutor:"/>
+            <h:panelGroup layout="block">
+                    <p:inputMask id="edTeTutor" required="true"
+                                 requiredMessage="Informe o Telefone"
+                                 value="#{marcarConsulta.consulta.telefone}"
+                                 mask="(99)99999-9999"/>
+                    <p:message for="edTeTutor"/>
+                </h:panelGroup>
+            <p:outputLabel value="Data:"/>
+                    <p:calendar id="datetime" locale="pt" value="#{marcarConsulta.consulta.data}" pattern="dd/MM/yyyy hh:mm"
+                                stepMinute="15"  minHour="08" maxHour="17" required="true" requiredMessage="Insira uma data!">
+                        <f:convertDateTime pattern="dd/MM/yyyy hh:mm"/>
+                    </p:calendar>
             </p:panelGrid>
+            <p:commandButton value="Confirmar"
+                             update="pnlForm,:tabConsultas,:mensagens"
+                             action="#{marcarConsulta.confirmar}"/>
+            <p:commandButton value="Cancelar" immediate="true"
+                             resetValues="true"
+                             action="#{marcarConsulta.cancelar}"
+                             update="pnlForm"/>
+            <p:button value="ajhd" href="/cadastroAnimalVet.xhtml"/>
+           
+            
         </h:form>
+         <p:dataTable id="tabConsultas"
+                      value="#{marcarConsulta.consultas}" var="c">
+             <p:column headerText="Veterinario" sortBy="#{c.veterinario.nome}">
+                 <h:outputText value="#{c.veterinario.nome}"/>
+            </p:column>
+            <p:column headerText="Tipo Animal:">
+                <h:outputText value="#{c.veterinario.animal.especie}"/>
+            </p:column>
+            <p:column headerText="Nome Animal">
+                <h:outputText value="#{c.nomepet}"/>
+            </p:column>
+             <p:column headerText="Tutor" sortBy="#{c.tutor}">
+                <h:outputText value="#{c.tutor}"/>
+            </p:column>
+            <p:column headerText="Motivo">
+                <h:outputText value="#{c.motivo}"/>
+            </p:column>
+             <p:column headerText="Telefone">
+                 <h:outputText value="#{c.telefone}"/>
+            </p:column>
+             <p:column headerText="Data">
+                 <h:outputText value="#{c.data}">
+                     <f:convertDateTime pattern="dd/MM/yyyy hh:mm"/>
+                 </h:outputText>
+            </p:column>
+            <p:column headerText="Ações">
+                <h:form>
+                    <p:commandButton value="X" update=":tabConsultas"                                     
+                                     action="#{marcarConsulta.remover(c)}">
+                        <p:confirm message="Desmarcar essa consulta?"/>
+                    </p:commandButton>
+                    <p:commandButton value="Editar" update=":conForm:pnlForm"
+                                     action="#{marcarConsulta.editar(c)}"/>
+                </h:form>
+            </p:column>
+        </p:dataTable>
+        <h:form>
+            <p:confirmDialog header="Confirmação" width="300" global="true" height="200">
+                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes"/>
+                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no"/>
+            </p:confirmDialog>
+        </h:form>
+        <p:growl id="mensagens"/>
     </h:body>
 </html>
 
