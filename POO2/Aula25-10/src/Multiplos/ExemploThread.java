@@ -3,7 +3,7 @@ package Multiplos;
 
 import java.util.ArrayList;
 import java.util.List;
-import threads.Tarefa;
+import Multiplos.Tarefa;
 
 public class ExemploThread {
 
