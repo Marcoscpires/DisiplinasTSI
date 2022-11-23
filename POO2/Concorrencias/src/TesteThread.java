@@ -1,3 +1,5 @@
+import java.security.SecureRandom;
+
 public class TesteThread extends Thread{
     
     public static void main(String[] args) throws InterruptedException{
@@ -11,7 +13,15 @@ public class TesteThread extends Thread{
             }
         
             public void run(){
-                System.out.println("Marcos Cordeiro Pires");
+                while
+                System.out.println("Olá A");
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                
         
             }
     
