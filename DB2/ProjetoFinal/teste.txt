@@ -1,0 +1,10 @@
+termometro: 🌡️ :thermometer:
+céu limpo: ☀️ :sun:
+chuva leve:🌧️ :cloud_with_rain:
+neblina: 🌫️ :fog:
+algumas nuvens: 🌤️ :sun_behind_small_cloud:
+chuva moderada: 🌧️ :cloud_with_rain:
+⛈️
+nublado: ☁️ :cloud:
+💨 :dashing_away:
+     

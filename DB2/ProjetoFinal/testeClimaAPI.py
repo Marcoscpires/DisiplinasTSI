@@ -10,12 +10,19 @@ class Clima():
     
     def buscar(self):
         clima = requests.get(self.url).json()
-        return str(f"temperatura: {clima['main']['temp']}ºC\n {clima['weather'][0]['desscription']}")
+        temp = clima['main']['temp']
+        situacao = clima['weather'][0]['description']
+        icon = ""
+        match (situacao):
+            case 'céu limpo':
+                icon = ":sun:"
+        
+        return emoji.emojize(str(f" :thermometer: {temp}ºC\n {situacao} {icon}"))
         	
         
 
 
-teste = "/clima toledo"
+teste = "/clima londres"
 teste = teste.removeprefix("/clima ")
 print(teste.strip())
 
@@ -23,6 +30,6 @@ try:
     clima = Clima(teste)
     print(clima.buscar())
 except:
-    print(emoji.demojize("☀"))
+    print(emoji.emojize("Erro"))
     
  
