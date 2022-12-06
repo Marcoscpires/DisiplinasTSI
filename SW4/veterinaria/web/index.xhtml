@@ -11,6 +11,7 @@
     <h:body>
         <!--Cadastro de Consulta-->
         <h:form id="conForm">
+            #{marcarConsulta.limpar()}
             <p:panelGrid columns="2" id="pnlForm">
                 <p:outputLabel for="edAnimal" value="Tipo de Animal:"/>
                 <p:selectOneMenu value="#{marcarConsulta.animalEscolhido}"
@@ -132,8 +133,6 @@
                                      action="#{marcarConsulta.remover(c)}">
                         <p:confirm message="Desmarcar essa consulta?"/>
                     </p:commandButton>
-                    <p:commandButton value="Editar" update=":conForm:pnlForm"
-                                     action="#{marcarConsulta.editar(c)}"/>
                 </h:form>
             </p:column>
         </p:dataTable>

@@ -108,6 +108,12 @@ public class MarcarConsulta implements Serializable {
         consulta = new Consulta();
         return null;
     }
+    public String limpar() {
+        consultas = consultaDAO.limpar();
+        return null;        
+    }
+ 
+    
 
     public void remover(Consulta cons) {
         consultaDAO.remover(cons);

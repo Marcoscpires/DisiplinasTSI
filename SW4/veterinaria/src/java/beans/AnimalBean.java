@@ -18,7 +18,9 @@ import javax.enterprise.inject.Produces;
 @ApplicationScoped
 public class AnimalBean {
 
+    
     AnimalDAO animalDAO;
+   
     ConsultaDAO consultaDAO;
 
     public AnimalBean() {
@@ -43,7 +45,7 @@ public class AnimalBean {
     @PostConstruct
     public void iniciar() {
         try {
-            FileInputStream fis = new FileInputStream("dados.dat");
+            FileInputStream fis = new FileInputStream("animal.txt");
             ObjectInputStream ois = new ObjectInputStream(fis);
             LinkedList<Animal> animais = (LinkedList<Animal>) ois.readObject();
             consultaDAO = (ConsultaDAO) ois.readObject();
@@ -57,7 +59,7 @@ public class AnimalBean {
     public void finalizar() {
         System.out.println("Este é o ponto para salvar os objetos em um arquivo...");
         try {
-            FileOutputStream fos = new FileOutputStream("dados.dat");
+            FileOutputStream fos = new FileOutputStream("animal.txt");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject( animalDAO.getAnimais());
             oos.writeObject( consultaDAO );

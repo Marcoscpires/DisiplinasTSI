@@ -3,11 +3,13 @@ package beans;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
+import javax.annotation.Resource;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.model.SelectItem;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.UserTransaction;
 import model.Consulta;
 import model.TipoAnimal;
 import model.Veterinario;
@@ -18,11 +20,14 @@ import model.Veterinario;
 public class ConsultaBean implements Serializable {
 
     
-    @PersistenceContext
+   @PersistenceContext
     EntityManager em;
+
+    @Resource
+    UserTransaction ctx;
     
     private Consulta consulta;
-    private static LinkedList<SelectItem> tiposAnimaisSelec;
+    private static LinkedList<SelectItem> vetsPorTipo;
     // para filtar os veterinários quando o usuário alterar o tipo de animal a consultar
     private TipoAnimal tipoAnimal;
     
@@ -39,7 +44,15 @@ public class ConsultaBean implements Serializable {
     }
     
     public String salvar() {
-        // TODO: completar o código para salvar a consulta, atualizando a lista.
+       try {
+            ctx.begin();
+            em.persist(consulta);
+            ctx.commit();
+            consulta = new Consulta();
+        } catch (Throwable t) {
+            t.printStackTrace();
+            try { ctx.rollback(); } catch(Throwable t2) { }
+        }
         return null;
     }
 
@@ -56,11 +69,11 @@ public class ConsultaBean implements Serializable {
                 + " Veterinario v where v.especialidade = :x")
                 .setParameter("x",tipoAnimal)
                 .getResultList();
-        tiposAnimaisSelec = new LinkedList<>();
-        tiposAnimaisSelec.add(new SelectItem(null, "Selecion um Animal"));
+        vetsPorTipo = new LinkedList<>();
+        vetsPorTipo.add(new SelectItem(null, "Selecion um Animal"));
         for (Veterinario v : vets) {
-            tiposAnimaisSelec.add(new SelectItem(v, v.getNome()));
+            vetsPorTipo.add(new SelectItem(v, v.getNome()));
         }
-        return tiposAnimaisSelec;
+        return vetsPorTipo;
     }    
 }

@@ -33,6 +33,12 @@ public class ConsultaDAO implements Serializable {
         return filtrados;
     }
     
+    public ArrayList<Consulta> limpar(){
+        ArrayList<Consulta> filtrados = new ArrayList<>();
+        filtrados.addAll(consultas);
+        return filtrados;
+    }
+    
     public void remover(Consulta c) {
         consultas.remove(c);
     }

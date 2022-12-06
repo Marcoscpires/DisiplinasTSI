@@ -23,7 +23,7 @@
                     <p:ajax event="change" update="cbVets"/>
                 </p:selectOneMenu>
                 
-                <p:outputLabel value="Veterinário"/>
+                <p:outputLabel for="cbVets" value="Veterinário"/>
                 <p:selectOneMenu value="#{consultaBean.consulta.veterinario}"
                                  converter="#{vetConverter}" id="cbVets">
                     <f:selectItems value="#{consultaBean.vetsPorTipo}"/>
