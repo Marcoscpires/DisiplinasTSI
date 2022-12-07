@@ -9,6 +9,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.model.SelectItem;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.UserTransaction;
 import model.Consulta;
 import model.TipoAnimal;
@@ -27,6 +28,27 @@ public class ConsultaBean implements Serializable {
     UserTransaction ctx;
     
     private Consulta consulta;
+    private List<Consulta> consultas;
+
+    public List<Consulta> getConsultas() {
+        if (consultas == null) {
+            try {
+                Query consulta = em.createQuery(
+                        "select c from Consulta c "
+                        + "order by c",
+                        TipoAnimal.class);
+                consultas = consulta.getResultList();
+            } catch (Throwable t) {
+                t.printStackTrace();
+                consultas = new LinkedList<Consulta>();
+            }
+        }
+        return consultas;
+    }
+    
+    public void setConsultas(List<Consulta> consultas) {
+        this.consultas = consultas;
+    }
     private static LinkedList<SelectItem> vetsPorTipo;
     // para filtar os veterinários quando o usuário alterar o tipo de animal a consultar
     private TipoAnimal tipoAnimal;
@@ -41,6 +63,15 @@ public class ConsultaBean implements Serializable {
 
     public void setConsulta(Consulta consulta) {
         this.consulta = consulta;
+    }
+    
+    public String cancelar(){
+        consulta = new Consulta();
+        return null;
+    }
+    
+    public String remover(Consulta c){
+        return null;
     }
     
     public String salvar() {
