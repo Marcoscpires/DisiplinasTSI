@@ -81,20 +81,4 @@ public class TipoAnimalBean implements Serializable {
         }
         return null;
     }
-
-    public void remover(TipoAnimal tp) {
-        try {
-            trx.begin();
-            tp = em.merge(tp);
-            em.remove(tp);
-            tipos.remove( tp );
-            trx.commit();
-        } catch (Throwable t) {
-            t.printStackTrace();
-            try {
-                trx.rollback();
-            } catch (Exception ex2) {
-            }
-        }
-    }
 }

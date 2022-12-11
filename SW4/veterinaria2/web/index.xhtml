@@ -6,6 +6,14 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Veterinaria</title>
+        <script>
+        function DiasValidos(date) {
+            if (date.getDay() == 2 || date.getDay() == 3 || date.getDay() == 4 ) {
+                return [true, ''];
+            }
+            return [false, ''];
+        }
+        </script>
     </h:head>
     <h:body>
         <p:panel style="width: 95%;">
@@ -29,45 +37,43 @@
                     <f:selectItems value="#{consultaBean.vetsPorTipo}"/>
                 </p:selectOneMenu>
             <p:outputLabel for="edTutor" value="Tutor:"/>
-                <p:inputText value="#{marcarConsulta.consulta.tutor}"
+            <p:inputText value="#{consultaBean.consulta.tutor}"
                              id="edTutor" required="true" 
                              requiredMessage="Selecione um veterinario"/>
                 <p:outputLabel for="edNAnimal" value="Nome do Animal"/>
-                <p:inputText value="#{marcarConsulta.consulta.nomepet}"
+                <p:inputText value="#{consultaBean.consulta.animal}"
                              id="edNAnimal" required="true" 
                              requiredMessage="Selecione um veterinario"/>
                 <p:outputLabel for="edMotivo" value="Motivo:"/>
-                <p:inputText value="#{marcarConsulta.consulta.motivo}"
+                <p:inputText value="#{consultaBean.consulta.queixa}"
                              id="edMotivo"/>
                 <p:outputLabel for="edTeTutor" value="Telefone do Tutor:"/>
                 <h:panelGroup layout="block">
                     <p:inputMask id="edTeTutor" required="true"
                                  requiredMessage="Informe o Telefone"
-                                 value="#{marcarConsulta.consulta.telefone}"
+                                 value="#{consultaBean.consulta.telefone}"
                                  mask="(99)99999-9999"/>
                     <p:message for="edTeTutor"/>
                 </h:panelGroup>
                 <p:outputLabel value="Data:"/>
-                <p:calendar id="datetime" locale="pt" value="#{marcarConsulta.consulta.data}" pattern="dd/MM/yyyy HH:mm"
+                <p:calendar id="datetime" locale="pt" value="#{consultaBean.consulta.quando}" pattern="dd/MM/yyyy HH:mm"
                             stepMinute="15"  minHour="08" maxHour="17" required="true" requiredMessage="Insira uma data!"
-                            beforeShowDay="beforeShowDayCallback">
+                            beforeShowDay="DiasValidos">
                     <f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
                 </p:calendar>
             </p:panelGrid>
-            <p:commandButton value="Salvar" action="#{consultaBean.salvar}"
-                             update=":frmConsulta"/>
             <p:commandButton value="Confirmar"
-                             update="pnlForm,:tabConsultas,:mensagens"
-                             action="#{marcarConsulta.confirmar}"></p:commandButton>
+                             update=":frmConsulta,:tabConsultas,:mensagens"
+                             action="#{consultaBean.salvar}"/>
             <p:commandButton value="Cancelar" immediate="true"
                              resetValues="true"
-                             action="#{marcarConsulta.cancelar}"
-                             update="pnlForm"/>
+                             action="#{consultaBean.cancelar}"
+                             update=":frmConsulta"/>
         </h:form>
         <p:dataTable id="tabConsultas"
                      value="#{consultaBean.consultas}" var="c">
             <p:column headerText="Data">
-                <h:outputText value="#{c.data}">
+                <h:outputText value="#{c.quando}">
                     <f:convertDateTime pattern="dd/MM/yyyy hh:mm"/>
                 </h:outputText>
             </p:column>
@@ -75,16 +81,16 @@
                 <h:outputText value="#{c.veterinario.nome}"/>
             </p:column>
             <p:column headerText="Tipo Animal">
-                <h:outputText value="#{c.veterinario.animal.especie}"/>
+                <h:outputText value="#{c.veterinario.especialidade.descricao}"/>
             </p:column>
             <p:column headerText="Nome Animal">
-                <h:outputText value="#{c.nomepet}"/>
+                <h:outputText value="#{c.animal}"/>
             </p:column>
             <p:column headerText="Tutor" sortBy="#{c.tutor}">
                 <h:outputText value="#{c.tutor}"/>
             </p:column>
             <p:column headerText="Motivo">
-                <h:outputText value="#{c.motivo}"/>
+                <h:outputText value="#{c.queixa}"/>
             </p:column>
             <p:column headerText="Telefone">
                 <h:outputText value="#{c.telefone}"/>
@@ -98,6 +104,14 @@
                 </h:form>
             </p:column>
         </p:dataTable>
+         <h:form>
+            <p:confirmDialog header="Confirmação" width="300" global="true" height="200">
+                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes"/>
+                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no"/>
+            </p:confirmDialog>
+        </h:form>
+        <p:growl autoUpdate="true"/>
+        <p:growl id="mensagens"/>
     </h:body>
 </html>
 

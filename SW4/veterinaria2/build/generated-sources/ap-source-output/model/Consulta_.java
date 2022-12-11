@@ -6,7 +6,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import model.Veterinario;
 
-@Generated(value="EclipseLink-2.7.9.v20220616-rNA", date="2022-12-07T19:41:49")
+@Generated(value="EclipseLink-2.7.9.v20220616-rNA", date="2022-12-11T16:01:20")
 @StaticMetamodel(Consulta.class)
 public class Consulta_ { 
 

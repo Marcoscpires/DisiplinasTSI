@@ -27,13 +27,6 @@
             <p:column headerText="Descrição">
                 <h:outputText value="#{tp.descricao}"/>
             </p:column>
-            <p:column>
-                <h:form>
-                    <p:commandButton value="X" 
-                                     action="#{tipoAnimalBean.remover(tp)}"
-                                     update=":tabTipos"/>
-                </h:form>
-            </p:column>
         </p:dataTable>
     </h:body>
 </html>
