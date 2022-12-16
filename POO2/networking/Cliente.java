@@ -9,8 +9,8 @@ public class Cliente {
 			System.err.println("Passe o endereco IP do servidor como argumento na linha de comando");
 			return;
 		}
-		try (Socket socket = new Socket("192.168.35.1", 59898)) {
-			System.out.println("Entre com as linhas de texto e então Ctrl+D ou Ctrl+C para sair");
+		try (Socket socket = new Socket("10.4.0.123", 59898)) {
+			System.out.println("Entre com as linhas de texto e então Ctrl+D ou Ctrl+C para sair\nDigite /listar para ver usuaios onlinesS");
 			Scanner scanner = new Scanner(System.in);
 			Scanner in = new Scanner(socket.getInputStream());
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
