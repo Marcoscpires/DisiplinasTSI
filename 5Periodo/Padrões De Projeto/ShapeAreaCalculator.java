@@ -13,12 +13,12 @@ public class ShapeAreaCalculator
 	   scanner.close();
 	   System.out.println(""); //salta uma linha
 	   area = width*height;
-	   System.out.printf("\nÁrea: %5.2f", area);
+	   System.out.printf("\nï¿½rea: %5.2f", area);
 	}
 	
 	public void ParallelogramArea()
 	{
-		//Calcula a área de um paralelogramo.
+		//Calcula a ï¿½rea de um paralelogramo.
 		//--------------------------------------------------
 		Scanner scanner = new Scanner(System.in);
 		float B, h, Area;
@@ -26,14 +26,14 @@ public class ShapeAreaCalculator
 		B = Math.abs(scanner.nextFloat()); //garante base positiva
 	   System.out.print("Digite o valor da altura: ");
 	   h = Math.abs(scanner.nextFloat()); //garante altura positiva
-	   Area = B*h; //fórmula da área do paralelogramo
+	   Area = B*h; //fï¿½rmula da ï¿½rea do paralelogramo
 	   System.out.println("");
-	   System.out.printf("\nÁrea do paralelogramo: %f", Area);
+	   System.out.printf("\nï¿½rea do paralelogramo: %f", Area);
 	}
 	
 	public void TrapeziumArea()
 	{
-		//Calcula a área de um trapézio.
+		//Calcula a ï¿½rea de um trapï¿½zio.
 		//--------------------------------------------------------
 		float B1,B2, h, L1, L2, Area;
 		do{ //valida as bases
@@ -51,9 +51,9 @@ public class ShapeAreaCalculator
 			h = scanner.nextFloat();
 			h = Math.abs(h); //garante altura positiva
 		}while(!(h>0));
-		Area = ((B1+B2)*h)/2; //fórmula da área do trapézio
+		Area = ((B1+B2)*h)/2; //fï¿½rmula da ï¿½rea do trapï¿½zio
 		System.out.println("");
-		System.out.printf("\nÁrea do trapézio:%f", Area);
+		System.out.printf("\nï¿½rea do trapï¿½zio:%f", Area);
 	}
 	
 	public static void main(String args[])
