@@ -1,0 +1,11 @@
+1 - Falso
+2 - B
+3 - E
+4 - Verdadeiro
+5 - Verdadeiro
+6 Disponibilidade
+  Integridade
+  Confidencialidade
+  Irretratabilidade	
+  Autenticidade
+7 - 			
