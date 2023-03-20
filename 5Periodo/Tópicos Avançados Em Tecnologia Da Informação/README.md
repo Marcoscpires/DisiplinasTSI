@@ -1,1 +1,0 @@
-# TATI = Tópicos Avançados Em Tecnologia Da Informação	
