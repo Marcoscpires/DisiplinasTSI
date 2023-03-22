@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="0sp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:text="A"
+        android:id="@+id/item_tipo"
+        android:textSize="30sp"/>
+    <LinearLayout
+        android:layout_width="0sp"
+        android:layout_weight="5"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_marca_modelo"
+            android:text="Fiat - Marea"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_placa_ano"
+            android:text="BBB-2344 - 2015"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="0sp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:text="R$ 17500,00"
+        android:textSize="16sp"
+        android:id="@+id/item_valor"/>
+
+</LinearLayout>
