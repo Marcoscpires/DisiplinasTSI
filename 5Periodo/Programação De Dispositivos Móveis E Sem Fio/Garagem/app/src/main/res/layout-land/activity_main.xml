@@ -4,12 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="0sp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/tipo"/>
+        android:text="Tipo:"/>
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,19 +24,19 @@
             android:layout_width="0sp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/automovel"
+            android:text="Automóvel"
             android:id="@+id/rb_automovel"/>
         <RadioButton
             android:layout_width="0sp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/motocicleta"
+            android:text="Motocicleta"
             android:id="@+id/rb_moto"/>
         <RadioButton
             android:layout_width="0sp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/caminhao"
+            android:text="Caminhão"
             android:id="@+id/rb_caminhao"/>
     </RadioGroup>
     <EditText
@@ -48,47 +53,48 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-    <EditText
-        android:layout_width="0sp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:id="@+id/ed_placa"
-        android:hint="Placa"/>
-    <EditText
-        android:layout_width="0sp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:id="@+id/ed_ano"
-        android:inputType="number"
-        android:hint="Ano"/>
-    <EditText
-        android:layout_width="0sp"
-        android:layout_weight="1.7"
-        android:layout_height="wrap_content"
-        android:id="@+id/ed_valor"
-        android:inputType="numberDecimal"
-        android:hint="Valor"/>
+        <EditText
+            android:layout_width="0sp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/ed_placa"
+            android:hint="Placa"/>
+        <EditText
+            android:layout_width="0sp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/ed_ano"
+            android:inputType="number"
+            android:hint="Ano"/>
+        <EditText
+            android:layout_width="0sp"
+            android:layout_weight="1.7"
+            android:layout_height="wrap_content"
+            android:id="@+id/ed_valor"
+            android:inputType="numberDecimal"
+            android:hint="Valor"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Adicionar"
-        android:layout_marginRight="5sp"
-        android:onClick="adicionar"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Remover"
-        android:onClick="remover"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adicionar"
+            android:layout_marginRight="5sp"
+            android:onClick="adicionar"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remover"
+            android:onClick="remover"/>
+    </LinearLayout>
     </LinearLayout>
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="0sp"
-        android:layout_weight="2"
+        android:layout_width="0sp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         android:id="@+id/lista_veiculos"/>
 </LinearLayout>

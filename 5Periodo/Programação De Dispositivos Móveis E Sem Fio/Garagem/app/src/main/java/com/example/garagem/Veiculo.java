@@ -2,7 +2,7 @@ package com.example.garagem;
 
 import java.io.Serializable;
 
-public class Veiculo implements Serializable{
+public class Veiculo implements Serializable {
     private char tipo;
     private String modelo;
     private String marca;
