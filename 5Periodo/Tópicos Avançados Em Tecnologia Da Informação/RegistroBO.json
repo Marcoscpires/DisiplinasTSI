@@ -1,0 +1,19 @@
+{
+    "identificador" : "identificador teste",
+    "dataOcorrencia" : "2023-01-28",
+    "periodoOcorrencia" : "A TARDE",
+    "partes" : [{
+        "nome": "Marcos",
+        "email" : "marcos@gmail.com",
+        "telefone" : "213123123",
+        "tipoEnvolvimento" : "total"
+    },
+    {
+        "nome": "Marcos",
+        "email" : "marcos@gmail.com",
+        "telefone" : "213123123",
+        "tipoEnvolvimento" : "total"
+    }],
+    "localOcorrencia" : null,
+    "veiculoFurtado" : null
+}
