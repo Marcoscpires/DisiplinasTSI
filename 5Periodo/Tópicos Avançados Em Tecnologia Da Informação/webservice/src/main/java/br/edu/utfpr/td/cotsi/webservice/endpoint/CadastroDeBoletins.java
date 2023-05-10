@@ -28,15 +28,18 @@ public class CadastroDeBoletins
 	private RegrasBoletins regrasBoletins;
 	
 	@GET 
-	public Response teste() {
-		return Response.ok("Teste bem sucedido").build();
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response buscarBoletins() {
+		return Response.ok(regrasBoletins.buscarTodos()).build();
 	}
 	
 	@GET
-	@Produces(MediaType.TEXT_PLAIN)
-	@Path("caminho2/{var1}")
-	public Response teste2(@PathParam("var1") String x){
-	return Response.ok(String.format("%s foi informado como pathParam", x)).build();
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("{var1}")
+	public Response buscarBoletim(@PathParam("var1") int x)
+	{
+		BoletimFurtoVeiculo bo = regrasBoletins.buscarPorId(x);
+		return Response.ok(bo).build();
 	}
 	
 	@POST
@@ -49,6 +52,9 @@ public class CadastroDeBoletins
 		
 	}
 	
+	@DELETE
+	@Path("deletar/{var1}")
+	
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
 	@Path("caminho3")
@@ -57,7 +63,7 @@ public class CadastroDeBoletins
 	}
 	
 	@PathParam("var1") 
-	private String x;
+	private int x;
 	
 	@QueryParam("var2") 
 	private String y;

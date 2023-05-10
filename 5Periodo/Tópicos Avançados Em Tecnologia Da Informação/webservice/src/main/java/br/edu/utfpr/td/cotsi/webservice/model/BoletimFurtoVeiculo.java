@@ -13,21 +13,16 @@ public class BoletimFurtoVeiculo
 	private Endereco localOcorrencia;
 	private Veiculo veiculoFurtado;
 	
-	public BoletimFurtoVeiculo(){}
-	
-	public BoletimFurtoVeiculo(String identificador, Date dataOcorrencia, String periodoOcorrencia, Parte[] partes,
-			Endereco localOcorrencia, Veiculo veiculoFurtado)
+	public BoletimFurtoVeiculo()
 	{
-		this.identificador = identificador;
-		this.dataOcorrencia = dataOcorrencia;
-		this.periodoOcorrencia = periodoOcorrencia;
-		this.partes = partes;
-		this.localOcorrencia = localOcorrencia;
-		this.veiculoFurtado = veiculoFurtado;
 		count++;
 		id = count;
 	}
-
+	
+	public int getId() {
+		return this.id;
+	}
+	
 	public String getIdentificador() 
 	{
 		return identificador;

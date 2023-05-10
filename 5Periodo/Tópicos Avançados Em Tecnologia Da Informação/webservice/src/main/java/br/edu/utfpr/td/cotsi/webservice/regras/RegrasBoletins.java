@@ -1,5 +1,7 @@
 package br.edu.utfpr.td.cotsi.webservice.regras;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,5 +18,15 @@ public class RegrasBoletins
 	{
 		boletinsDAO.persistir(bo);
 		
+	}
+	
+	public BoletimFurtoVeiculo buscarPorId(int id)
+	{
+		return boletinsDAO.buscarPorId(id);
+	}
+	
+	public ArrayList<BoletimFurtoVeiculo> buscarTodos()
+	{
+		return boletinsDAO.buscarTodos();
 	}
 }
