@@ -10,6 +10,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+
 import br.edu.utfpr.td.cotsi.webservice.model.BoletimFurtoVeiculo;
 import br.edu.utfpr.td.cotsi.webservice.model.Parte;
 import br.edu.utfpr.td.cotsi.webservice.regras.RegrasBoletins;
@@ -21,7 +23,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Path("boletins")
-public class CadastroDeBoletins 
+public class BoletinsEndPoint 
 {
 	
 	@Autowired
@@ -35,11 +37,10 @@ public class CadastroDeBoletins
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("{var1}")
-	public Response buscarBoletim(@PathParam("var1") int x)
+	@Path("{id}")
+	public Response buscarBoletimPorId(@PathParam("id") int id)
 	{
-		BoletimFurtoVeiculo bo = regrasBoletins.buscarPorId(x);
-		return Response.ok(bo).build();
+		return Response.ok(regrasBoletins.buscarPorId(id)).build();
 	}
 	
 	@POST
@@ -53,7 +54,35 @@ public class CadastroDeBoletins
 	}
 	
 	@DELETE
-	@Path("deletar/{var1}")
+	@Path("{id}")
+	public Response deletarPorId(@PathParam("id") int id) 
+	{
+		try 
+		{
+			regrasBoletins.deletarPorId(id);
+			return Response.ok("Boletim com id "+ id + " deletado.").build();
+		}catch (Exception e) 
+		{
+			e.printStackTrace();
+			return Response.status(Status.BAD_REQUEST).build();
+		}
+	}
+	
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("{id}")
+	public Response atualizarPorId(@PathParam("id") int id, BoletimFurtoVeiculo bo)
+	{
+		try
+		{
+			regrasBoletins.atualizar(id, bo);
+			return Response.ok("Boletim com id "+ id + " atualizado").build();
+		}catch (Exception e) 
+		{
+			return Response.status(Status.NOT_FOUND).build();
+		}
+	}
 	
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
@@ -62,8 +91,8 @@ public class CadastroDeBoletins
 		return Response.ok(String.format("%s foi informado como queryParam", x)).build();
 	}
 	
-	@PathParam("var1") 
-	private int x;
+	@PathParam("id") 
+	private int id;
 	
 	@QueryParam("var2") 
 	private String y;
@@ -72,7 +101,7 @@ public class CadastroDeBoletins
 	@Produces(MediaType.TEXT_PLAIN)
 	@Path("caminho4")	
 	public Response teste4(){
-		return Response.ok(String.format("%s = pathParan %s = queryParam ", x, y)).build();
+		return Response.ok(String.format("%s = pathParan %s = queryParam ", id, y)).build();
 	}
 	
 	@GET

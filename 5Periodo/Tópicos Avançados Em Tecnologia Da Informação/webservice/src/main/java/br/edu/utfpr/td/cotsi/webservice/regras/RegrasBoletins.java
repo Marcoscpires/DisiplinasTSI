@@ -29,4 +29,15 @@ public class RegrasBoletins
 	{
 		return boletinsDAO.buscarTodos();
 	}
+
+	public void deletarPorId(int id) 
+	{
+		boletinsDAO.deletarPorId(id);
+	}
+
+	public void atualizar(int id, BoletimFurtoVeiculo bo) {
+		boletinsDAO.atualizar(id, bo);
+		
+		
+	}
 }

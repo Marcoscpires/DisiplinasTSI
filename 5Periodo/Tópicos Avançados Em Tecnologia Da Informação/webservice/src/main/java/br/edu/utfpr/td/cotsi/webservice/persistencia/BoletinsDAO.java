@@ -24,4 +24,19 @@ public class BoletinsDAO
 		return boletins;
 	}
 
+	public void deletarPorId(int id) 
+	{
+		boletins.remove(boletins.stream().filter(bo -> bo.getId() == id).toList().get(0));
+	}
+
+	public void atualizar(int id, BoletimFurtoVeiculo bo) 
+	{
+		BoletimFurtoVeiculo boOld = boletins.stream().filter(b -> b.getId() == id).toList().get(0);
+		int pos = boletins.indexOf(boOld);
+		bo.setId(id);
+		boletins.set(pos, bo);
+		
+		
+	}
+
 }

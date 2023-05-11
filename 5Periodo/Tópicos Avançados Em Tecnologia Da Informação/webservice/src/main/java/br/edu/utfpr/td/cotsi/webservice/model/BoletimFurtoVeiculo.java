@@ -19,8 +19,14 @@ public class BoletimFurtoVeiculo
 		id = count;
 	}
 	
-	public int getId() {
+	public int getId() 
+	{
 		return this.id;
+	}
+	
+	public void setId(int id)
+	{
+		this.id = id;
 	}
 	
 	public String getIdentificador() 
