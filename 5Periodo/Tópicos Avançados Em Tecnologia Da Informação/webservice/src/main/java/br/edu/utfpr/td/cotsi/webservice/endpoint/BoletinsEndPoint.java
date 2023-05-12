@@ -11,10 +11,12 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
 import br.edu.utfpr.td.cotsi.webservice.model.BoletimFurtoVeiculo;
 import br.edu.utfpr.td.cotsi.webservice.model.Parte;
 import br.edu.utfpr.td.cotsi.webservice.regras.RegrasBoletins;
+
+import java.io.IOException;
+import java.text.ParseException;
 
 import javax.ws.rs.Consumes;
 
@@ -31,7 +33,8 @@ public class BoletinsEndPoint
 	
 	@GET 
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response buscarBoletins() {
+	public Response buscarBoletins() throws IOException, ParseException 
+	{
 		return Response.ok(regrasBoletins.buscarTodos()).build();
 	}
 	

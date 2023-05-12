@@ -34,9 +34,7 @@ public class BoletinsDAO
 		BoletimFurtoVeiculo boOld = boletins.stream().filter(b -> b.getId() == id).toList().get(0);
 		int pos = boletins.indexOf(boOld);
 		bo.setId(id);
-		boletins.set(pos, bo);
-		
-		
+		boletins.set(pos, bo);	
 	}
 
 }
