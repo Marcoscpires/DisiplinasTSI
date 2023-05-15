@@ -25,98 +25,87 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Path("boletins")
-public class BoletinsEndPoint 
-{
-	
+public class BoletinsEndPoint {
+
 	@Autowired
 	private RegrasBoletins regrasBoletins;
-	
-	@GET 
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response buscarBoletins() throws IOException, ParseException 
-	{
-		return Response.ok(regrasBoletins.buscarTodos()).build();
-	}
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("{id}")
-	public Response buscarBoletimPorId(@PathParam("id") int id)
-	{
-		return Response.ok(regrasBoletins.buscarPorId(id)).build();
+	public Response buscarBoletins() throws IOException, ParseException {
+		return Response.ok(regrasBoletins.buscarTodos()).build();
 	}
-	
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("id/{id}")
+	public Response buscarBoletimPorId(@PathParam("id") int id) {
+		try {
+			return Response.ok(regrasBoletins.buscarPorId(id)).build();
+		} catch (Exception e) {
+			return Response.status(Status.NOT_FOUND).build();
+		}
+
+	}
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("cidade/{cidade}")
+	public Response buscarBoletimPorCidade(@PathParam("cidade") String cidade) {
+		try {
+			return Response.ok(regrasBoletins.buscarPorCidade(cidade)).build();
+		} catch (Exception e) {
+			return Response.status(Status.NOT_FOUND).build();
+		}
+
+	}
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("periodo/{periodo}")
+	public Response buscarBoletimPorPeriodo(@PathParam("periodo") String periodo) {
+		try {
+			return Response.ok(regrasBoletins.buscarPorPeriodo(periodo)).build();
+		} catch (Exception e) {
+			return Response.status(Status.NOT_FOUND).build();
+		}
+
+	}
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response cadastrarBoletinOcorrencia(BoletimFurtoVeiculo bo) 
-	{
+	public Response cadastrarBoletinOcorrencia(BoletimFurtoVeiculo bo) {
 		regrasBoletins.cadastrar(bo);
 		return Response.ok(bo).build();
-		
+
 	}
-	
+
 	@DELETE
 	@Path("{id}")
-	public Response deletarPorId(@PathParam("id") int id) 
-	{
-		try 
-		{
+	public Response deletarPorId(@PathParam("id") int id) {
+		try {
 			regrasBoletins.deletarPorId(id);
-			return Response.ok("Boletim com id "+ id + " deletado.").build();
-		}catch (Exception e) 
-		{
+			return Response.ok().build();
+		} catch (Exception e) {
 			e.printStackTrace();
-			return Response.status(Status.BAD_REQUEST).build();
+			return Response.status(Status.NOT_FOUND).build();
 		}
 	}
-	
+
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{id}")
-	public Response atualizarPorId(@PathParam("id") int id, BoletimFurtoVeiculo bo)
-	{
-		try
-		{
+	public Response atualizarPorId(@PathParam("id") int id, BoletimFurtoVeiculo bo) {
+		try {
 			regrasBoletins.atualizar(id, bo);
-			return Response.ok("Boletim com id "+ id + " atualizado").build();
-		}catch (Exception e) 
-		{
+			return Response.ok().build();
+		} catch (Exception e) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
 	}
-	
-	@GET
-	@Produces(MediaType.TEXT_PLAIN)
-	@Path("caminho3")
-	public Response teste3(@QueryParam("var2") String x){
-		return Response.ok(String.format("%s foi informado como queryParam", x)).build();
-	}
-	
-	@PathParam("id") 
-	private int id;
-	
-	@QueryParam("var2") 
-	private String y;
-	
-	@GET
-	@Produces(MediaType.TEXT_PLAIN)
-	@Path("caminho4")	
-	public Response teste4(){
-		return Response.ok(String.format("%s = pathParan %s = queryParam ", id, y)).build();
-	}
-	
-	@GET
-	@Path("/carregarCliente")
-	@Produces({MediaType.APPLICATION_JSON})
-	public Response carregarCliente() {
-		Parte parte = new Parte();
-		parte.setEmail("joao@silva.com");
-		parte.setNome("Joao da Silva");
-		
-		return Response.ok(parte).build();
-	}
-	
-}
 
+
+
+}

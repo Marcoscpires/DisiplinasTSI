@@ -1,43 +1,35 @@
 package br.edu.utfpr.td.cotsi.webservice.regras;
 
-import java.util.ArrayList;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import java.util.List;
 
 import br.edu.utfpr.td.cotsi.webservice.model.BoletimFurtoVeiculo;
-import br.edu.utfpr.td.cotsi.webservice.persistencia.BoletinsDAO;
+import br.edu.utfpr.td.cotsi.webservice.model.Veiculo;
 
-@Component
-public class RegrasBoletins 
-{
-	@Autowired
-	private BoletinsDAO boletinsDAO;
+public interface RegrasBoletins {
 	
-	public void cadastrar(BoletimFurtoVeiculo bo)
-	{
-		boletinsDAO.persistir(bo);
-		
-	}
+	public void cadastrar(BoletimFurtoVeiculo bo);
 	
-	public BoletimFurtoVeiculo buscarPorId(int id)
-	{
-		return boletinsDAO.buscarPorId(id);
-	}
+	public BoletimFurtoVeiculo buscarPorId(int id);
 	
-	public ArrayList<BoletimFurtoVeiculo> buscarTodos()
-	{
-		return boletinsDAO.buscarTodos();
-	}
+	public List<BoletimFurtoVeiculo> buscarPorCidade(String cidade);
+	
+	public List<BoletimFurtoVeiculo> buscarPorPeriodo(String periodo);
+	
+	
+	public List<BoletimFurtoVeiculo> buscarTodos();
 
-	public void deletarPorId(int id) 
-	{
-		boletinsDAO.deletarPorId(id);
-	}
+	public void deletarPorId(int id);
 
-	public void atualizar(int id, BoletimFurtoVeiculo bo) {
-		boletinsDAO.atualizar(id, bo);
-		
-		
-	}
+	public void atualizar(int id, BoletimFurtoVeiculo bo);
+	
+	public Boolean validar(BoletimFurtoVeiculo bo);
+
+	public List<Veiculo> buscarTodosVeiculos();
+
+	public Veiculo buscarVeiculoPorPlaca(String placa);
+
+	public List<Veiculo> buscarVeiculoPorCor(String cor);
+
+	public List<Veiculo> buscarVeiculoPorTipo(String tipo);
+
 }

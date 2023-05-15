@@ -36,9 +36,10 @@ public class Main {
 		System.out.println("Inicio do programa");
 
 		BufferedReader br = new BufferedReader(new FileReader(
-				"C:\\Users\\TI\\Desktop\\DisiplinasTSI\\5Periodo\\Tópicos Avançados Em Tecnologia Da Informação\\webservice\\src\\main\\java\\br\\edu\\utfpr\\td\\cotsi\\webservice\\furtos.csv"));
+				"C:\\Users\\marco\\OneDrive\\Área de Trabalho\\DisiplinasTSI\\5Periodo\\Tópicos Avançados Em Tecnologia Da Informação\\webservice\\src\\main\\java\\br\\edu\\utfpr\\td\\cotsi\\webservice\\furtos.csv"));
 		SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
 		String linha = "";
+		String deletar = br.readLine();
 		while ((linha = br.readLine()) != null) {
 			BoletimFurtoVeiculo bo = new BoletimFurtoVeiculo();
 			Emplacamento placa = new Emplacamento();

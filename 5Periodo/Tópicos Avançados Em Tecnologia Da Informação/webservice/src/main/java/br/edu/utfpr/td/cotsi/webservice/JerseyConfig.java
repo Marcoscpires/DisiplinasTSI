@@ -6,6 +6,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
 import org.springframework.stereotype.Component;
 import br.edu.utfpr.td.cotsi.webservice.endpoint.BoletinsEndPoint;
+import br.edu.utfpr.td.cotsi.webservice.endpoint.VeiculosEndPoint;
 
 @Component
 @ApplicationPath("/webservice")
@@ -16,6 +17,7 @@ public class JerseyConfig extends ResourceConfig
 	{
 		this.register(RequestContextFilter.class);
 		this.register(BoletinsEndPoint.class);
+		this.register(VeiculosEndPoint.class);
 	}
 	
 }
