@@ -9,7 +9,7 @@ import br.edu.utfpr.td.cotsi.webservice.endpoint.BoletinsEndPoint;
 import br.edu.utfpr.td.cotsi.webservice.endpoint.VeiculosEndPoint;
 
 @Component
-@ApplicationPath("/webservice")
+@ApplicationPath("/delegacia")
 public class JerseyConfig extends ResourceConfig 
 {
 	
