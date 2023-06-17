@@ -61,7 +61,7 @@ public class BoletinsDAO
 	}
 
 	public List<Veiculo> buscarVeiculoPorTipo(String tipo) {
-		return boletins.stream().map(veiculos -> veiculos.getVeiculoFurtado()).filter(v -> v.getTipoVeiculo().equals(tipo)).toList();
+		return boletins.stream().map(veiculos -> veiculos.getVeiculoFurtado()).filter(v -> v.getTipoVeiculo().equalsIgnoreCase(tipo)).toList();
 	}
 	
 	

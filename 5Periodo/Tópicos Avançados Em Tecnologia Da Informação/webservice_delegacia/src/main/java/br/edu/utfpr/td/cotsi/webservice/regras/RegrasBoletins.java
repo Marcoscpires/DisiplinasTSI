@@ -7,7 +7,7 @@ import br.edu.utfpr.td.cotsi.webservice.model.Veiculo;
 
 public interface RegrasBoletins {
 	
-	public void cadastrar(BoletimFurtoVeiculo bo);
+	public void cadastrar(BoletimFurtoVeiculo bo) throws Exception;
 	
 	public BoletimFurtoVeiculo buscarPorId(int id);
 	

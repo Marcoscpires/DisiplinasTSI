@@ -75,10 +75,13 @@ public class BoletinsEndPoint {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response cadastrarBoletinOcorrencia(BoletimFurtoVeiculo bo) {
-		regrasBoletins.cadastrar(bo);
-		return Response.ok(bo).build();
-
+	public Response cadastrarBoletinOcorrencia(BoletimFurtoVeiculo bo) throws Exception {
+		try {
+			regrasBoletins.cadastrar(bo);
+			return Response.ok(bo).build();
+		}catch (Exception e) {
+			return Response.status(Status.BAD_REQUEST).build();
+		}
 	}
 
 	@DELETE

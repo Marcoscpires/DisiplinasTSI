@@ -2,7 +2,6 @@ package br.edu.utfpr.td.cotsi.webservice;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -32,11 +31,11 @@ public class Main {
 	}
 
 	@PostConstruct
-	public void init() throws IOException, ParseException {
+	public void init() throws Exception {
 		System.out.println("Inicio do programa");
 
 		BufferedReader br = new BufferedReader(new FileReader(
-				"C:\\Users\\marco\\OneDrive\\Área de Trabalho\\DisiplinasTSI\\5Periodo\\Tópicos Avançados Em Tecnologia Da Informação\\webservice\\src\\main\\java\\br\\edu\\utfpr\\td\\cotsi\\webservice\\furtos.csv"));
+				"/furtos.csv"));
 		SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
 		String linha = "";
 		String deletar = br.readLine();
@@ -61,7 +60,7 @@ public class Main {
 				try {
 					veiculo.setTipoVeiculo(dados[51]);
 				} catch (Exception e) {
-					veiculo.setTipoVeiculo(null);
+					veiculo.setTipoVeiculo("");
 				}
 				endereco.setBairro(dados[15]);
 				endereco.setCidade(dados[16]);

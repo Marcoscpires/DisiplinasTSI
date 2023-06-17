@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.glassfish.jersey.internal.guava.ExecutionError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,13 +17,20 @@ import br.edu.utfpr.td.cotsi.webservice.persistencia.BoletinsDAO;
 
 @Component
 public class RegrasBoletinsValidadores implements RegrasBoletins {
+	
 	@Autowired
 	private BoletinsDAO boletinsDAO;
 
-	public void cadastrar(BoletimFurtoVeiculo bo) {
-		validar(bo);
-		boletinsDAO.persistir(bo);
-
+	public void cadastrar(BoletimFurtoVeiculo bo) throws Exception {
+		if(bo.getPartes() == null) {
+			boletinsDAO.persistir(bo);
+		}else { 
+			if(validar(bo)) {
+				boletinsDAO.persistir(bo);
+			}else {
+				throw new Exception("Email invalido");
+			}
+		}	
 	}
 
 	public BoletimFurtoVeiculo buscarPorId(int id) {
@@ -70,16 +78,17 @@ public class RegrasBoletinsValidadores implements RegrasBoletins {
 	}
 
 	public Boolean validarEmail(BoletimFurtoVeiculo bo) {
-		Pattern pattern = Pattern.compile("^[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,}$");
 		Parte[] partes = bo.getPartes();
+		String email;
+		Boolean valido = false;
 		for (int i = 0; i < partes.length; i++) {
-			Matcher corresponde = pattern.matcher(partes[i].getEmail());
-			if (!corresponde.matches()) {
-				return false;
+			email = partes[i].getEmail();
+			if((email.indexOf('@') > 0) && (email.indexOf('.') >email.indexOf('@')+1)) {
+				valido = true;
+			}else {
+				valido = false;
 			}
 		}
-		return true;
-
+		return valido;
 	}
-
 }
