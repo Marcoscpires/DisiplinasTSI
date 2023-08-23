@@ -35,7 +35,7 @@ public class Main {
 		System.out.println("Inicio do programa");
 
 		BufferedReader br = new BufferedReader(new FileReader(
-				"/furtos.csv"));
+				"furtos.csv"));
 		SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
 		String linha = "";
 		String deletar = br.readLine();
