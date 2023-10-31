@@ -30,7 +30,7 @@ h1{
 }
 
 #score-table {
-    color: #e5e5e5;
+    color: #ffffff;
     font-size: 13px;
     vertical-align: top;
     position: fixed;
@@ -81,7 +81,6 @@ padding: 10px;
     text-align: right;
 }
 
-#score-table .current-player .socket-id,
-#score-table .current-player .score-value {
-    color: #bdaa27;
+#score-table .current-player{
+    color: #3fc9ff;
 }

@@ -5,15 +5,15 @@ export default function createGame() {
         players: {},
         fruits: {},
         screen: {
-            width: 25,
-            height: 25
+            width: 30,
+            height: 30
         }
     }
 
     const observers = []
 
     function start() {
-        const frequency = 4000
+        const frequency = 3500
 
         setInterval(addFruit, frequency)
     }
