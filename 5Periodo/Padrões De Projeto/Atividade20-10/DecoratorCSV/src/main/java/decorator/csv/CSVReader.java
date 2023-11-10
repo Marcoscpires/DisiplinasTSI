@@ -9,7 +9,6 @@ public class CSVReader extends Reader
     private BufferedReader buffReader = null;
     private Separator separator = Separator.COMMA;
 
-    //
     public CSVReader(Reader in) 
     {
         super(in);

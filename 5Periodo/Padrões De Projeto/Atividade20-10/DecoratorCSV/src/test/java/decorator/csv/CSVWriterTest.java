@@ -13,19 +13,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 class CSVWriterTest 
-{
-	
-	@TempDir
-	static File tempDirPath; 
-	
-	final File csvFile = new File(tempDirPath, "csvTest.csv");
+{	
+	final File csvFile = new File("csvTest.csv");
 	CSVWriter csvWriter = null;
-	
-	@BeforeAll
-	static void shouldExisteTemporaryDirectory()
-	{
-		assertTrue(tempDirPath.isDirectory(), "Should be a directory ");
-	}
 	
 	@BeforeEach
 	void instantiateNewCSVWriter()
@@ -37,7 +27,6 @@ class CSVWriterTest
 	void closeCSVWriterAndDeleteTheFile() 
 	{
 		assertDoesNotThrow(() -> csvWriter.close());
-		assertDoesNotThrow(() -> csvFile.delete());
 	}
 	
 	private char[] readFileContent(File file)
@@ -101,10 +90,9 @@ class CSVWriterTest
 	void shouldWriteTokenAndSeparator()
 	{
 		String token = "Ameixa";
-		assertDoesNotThrow( () ->
+		assertDoesNotThrow(() ->
 		{	
-			csvWriter.writeToken(token);
-			csvWriter.writeSeparator();
+			csvWriter.writeTokenAndSeparator(token);
 			csvWriter.flush();
 		});
 		
@@ -155,6 +143,6 @@ class CSVWriterTest
 		
 		String actual = new String(readFileContent(csvFile));
 		
-		assertTrue(expected.equals(actual));
+		assertTrue(actual.equals(expected));
 		}	
 }
